@@ -7,7 +7,6 @@ import (
 
 
 
-
 func main() {
 	// a:=[3]int{1,2,3}
 	// var t = true

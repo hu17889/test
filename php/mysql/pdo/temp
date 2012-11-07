@@ -1,0 +1,715 @@
+--
+../code/module/test/controller/test_controller.php:        $sth->execute();
+../code/module/test/controller/test_controller.php-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/test/controller/test_controller.php-        return $result;
+../code/module/test/controller/test_controller.php-    }
+../code/module/test/controller/test_controller.php-
+--
+--
+--
+--
+--
+--
+--
+--
+--
+../code/module/oauth/store/oauth_token.php:            $sth->execute();
+../code/module/oauth/store/oauth_token.php-
+../code/module/oauth/store/oauth_token.php-            $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth/store/oauth_token.php-
+../code/module/oauth/store/oauth_token.php-            $cache->setex($key, $this->cacheTime, serialize($result));
+--
+../code/module/oauth/store/oauth_token.php:            $sth->execute();
+../code/module/oauth/store/oauth_token.php-
+../code/module/oauth/store/oauth_token.php-            return $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/oauth/store/oauth_token.php-        } elseif(!is_null($limit) && !is_null($limit)){
+../code/module/oauth/store/oauth_token.php-            $result = array();
+--
+../code/module/oauth/store/oauth_token.php:            $sth->execute();
+../code/module/oauth/store/oauth_token.php-            $items = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/oauth/store/oauth_token.php-            if($sth->rowCount() == 0){
+../code/module/oauth/store/oauth_token.php-                $result['ret'] = 'no_record';
+../code/module/oauth/store/oauth_token.php-            }else {
+--
+../code/module/oauth/store/oauth_token.php:            $sth->execute();
+../code/module/oauth/store/oauth_token.php-            $total = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth/store/oauth_token.php-            $result['total'] = $total['TOTAL'];
+../code/module/oauth/store/oauth_token.php-            return $result;
+../code/module/oauth/store/oauth_token.php-        }
+--
+../code/module/oauth/store/oauth_token.php:        $sth->execute();
+../code/module/oauth/store/oauth_token.php-
+../code/module/oauth/store/oauth_token.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth/store/oauth_token.php-    }
+../code/module/oauth/store/oauth_token.php-
+--
+../code/module/oauth/store/oauth_token.php:        return $sth->execute();
+../code/module/oauth/store/oauth_token.php-    }
+../code/module/oauth/store/oauth_token.php-
+../code/module/oauth/store/oauth_token.php-    public function remove($user_id, $consumer_key)
+../code/module/oauth/store/oauth_token.php-    {
+--
+../code/module/oauth/store/oauth_token.php:            $sth_cache->execute();
+../code/module/oauth/store/oauth_token.php-
+../code/module/oauth/store/oauth_token.php-            $result = $sth_cache->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth/store/oauth_token.php-            
+../code/module/oauth/store/oauth_token.php-            // delete data
+--
+../code/module/oauth/store/oauth_token.php:        $sth->execute();
+../code/module/oauth/store/oauth_token.php-            
+../code/module/oauth/store/oauth_token.php-            // delete cache
+../code/module/oauth/store/oauth_token.php-            $cache = Helper_Factory::getCacheInstance();
+../code/module/oauth/store/oauth_token.php-            $key = $this->getKey($result['token']);
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+../code/module/oauth2/store/oauth_token.php:        $result = $sth->execute();
+../code/module/oauth2/store/oauth_token.php-        if($result) {
+../code/module/oauth2/store/oauth_token.php-            $key = $this->getKey($oauth_token['access_token']);
+../code/module/oauth2/store/oauth_token.php-            Helper_Factory::getCacheInstance()->del($key);
+../code/module/oauth2/store/oauth_token.php-        }
+--
+../code/module/oauth2/store/oauth_token.php:            $sth_cache->execute();
+../code/module/oauth2/store/oauth_token.php-
+../code/module/oauth2/store/oauth_token.php-            $result = $sth_cache->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth2/store/oauth_token.php-            
+../code/module/oauth2/store/oauth_token.php-            // delete data
+--
+../code/module/oauth2/store/oauth_token.php:        $sth->execute();
+../code/module/oauth2/store/oauth_token.php-        
+../code/module/oauth2/store/oauth_token.php-            // delete cache
+../code/module/oauth2/store/oauth_token.php-            $cache = Helper_Factory::getCacheInstance();
+../code/module/oauth2/store/oauth_token.php-            $key = $this->getKey($result['token']);
+--
+../code/module/oauth2/store/oauth_token.php:            $sth->execute();
+../code/module/oauth2/store/oauth_token.php-            $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth2/store/oauth_token.php-            if(!empty($result)) {
+../code/module/oauth2/store/oauth_token.php-                $cache->setex($key, OAUTH2_DEFAULT_ACCESS_TOKEN_CACHE_LIFETIME, serialize($result));
+../code/module/oauth2/store/oauth_token.php-            }
+--
+../code/module/oauth2/store/oauth_token.php:        $sth->execute();
+../code/module/oauth2/store/oauth_token.php-
+../code/module/oauth2/store/oauth_token.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth2/store/oauth_token.php-    }
+../code/module/oauth2/store/oauth_token.php-
+--
+../code/module/oauth2/store/oauth_token.php:        $sth->execute();
+../code/module/oauth2/store/oauth_token.php-
+../code/module/oauth2/store/oauth_token.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth2/store/oauth_token.php-    }
+../code/module/oauth2/store/oauth_token.php-
+--
+../code/module/oauth2/store/oauth_token.php:            $sth->execute();
+../code/module/oauth2/store/oauth_token.php-
+../code/module/oauth2/store/oauth_token.php-            return $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/oauth2/store/oauth_token.php-        }elseif(!is_null($start) && !is_null($limit)){
+../code/module/oauth2/store/oauth_token.php-            $result = array();
+--
+../code/module/oauth2/store/oauth_token.php:            $sth->execute();
+../code/module/oauth2/store/oauth_token.php-            $items = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/oauth2/store/oauth_token.php-            if($sth->rowCount() == 0){
+../code/module/oauth2/store/oauth_token.php-                $result['ret'] = 'no_record';
+../code/module/oauth2/store/oauth_token.php-            }else {
+--
+../code/module/oauth2/store/oauth_token.php:            $sth->execute();
+../code/module/oauth2/store/oauth_token.php-            $total = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/oauth2/store/oauth_token.php-            $result['total'] = $total['TOTAL'];
+../code/module/oauth2/store/oauth_token.php-            return $result;
+../code/module/oauth2/store/oauth_token.php-        }
+--
+--
+--
+--
+--
+--
+../code/module/reader/dao/reader.php:        $sth->execute();
+../code/module/reader/dao/reader.php-
+../code/module/reader/dao/reader.php-        return $sth->rowCount();
+../code/module/reader/dao/reader.php-    }
+../code/module/reader/dao/reader.php-
+--
+../code/module/reader/dao/reader.php:        $sth->execute();
+../code/module/reader/dao/reader.php-
+../code/module/reader/dao/reader.php-        return $sth->rowCount();
+../code/module/reader/dao/reader.php-    }
+../code/module/reader/dao/reader.php-
+--
+../code/module/reader/dao/reader.php:        $sth->execute();
+../code/module/reader/dao/reader.php-        if($sth->rowCount() == 0) {
+../code/module/reader/dao/reader.php-            return null;
+../code/module/reader/dao/reader.php-        } else {
+../code/module/reader/dao/reader.php-            $result = $sth->fetch(PDO::FETCH_ASSOC);
+--
+../code/module/reader/dao/reader.php:        $sth->execute();
+../code/module/reader/dao/reader.php-        if($sth->rowCount() == 0) {
+../code/module/reader/dao/reader.php-            return null;
+../code/module/reader/dao/reader.php-        } else {
+../code/module/reader/dao/reader.php-            $result = $sth->fetch(PDO::FETCH_ASSOC);
+--
+../code/module/reader/dao/reader.php:        $sth->execute();
+../code/module/reader/dao/reader.php-
+../code/module/reader/dao/reader.php-        return $sth->rowCount();
+../code/module/reader/dao/reader.php-    }
+../code/module/reader/dao/reader.php-
+--
+--
+--
+--
+--
+--
+--
+../code/module/sesskey/store/authorization.php:        $result = $sth->execute();
+../code/module/sesskey/store/authorization.php-        return $result;
+../code/module/sesskey/store/authorization.php-    }
+../code/module/sesskey/store/authorization.php-
+../code/module/sesskey/store/authorization.php-    // 数据库中删除授权
+--
+../code/module/sesskey/store/authorization.php:        $sth->execute();
+../code/module/sesskey/store/authorization.php-        return $sth->rowCount();
+../code/module/sesskey/store/authorization.php-    }
+../code/module/sesskey/store/authorization.php-
+../code/module/sesskey/store/authorization.php-    // 数据库中根据client_id&user_id检索
+--
+../code/module/sesskey/store/authorization.php:        $sth->execute();
+../code/module/sesskey/store/authorization.php-
+../code/module/sesskey/store/authorization.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/sesskey/store/authorization.php-    }
+../code/module/sesskey/store/authorization.php-
+--
+../code/module/sesskey/store/authorization.php:            $sth->execute();
+../code/module/sesskey/store/authorization.php-
+../code/module/sesskey/store/authorization.php-            return $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/sesskey/store/authorization.php-        }elseif(!is_null($start) && !is_null($limit)){
+../code/module/sesskey/store/authorization.php-            $result = array();
+--
+../code/module/sesskey/store/authorization.php:            $sth->execute();
+../code/module/sesskey/store/authorization.php-            $items = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/sesskey/store/authorization.php-            if($sth->rowCount() == 0){
+../code/module/sesskey/store/authorization.php-                $result['ret'] = 'no_record';
+../code/module/sesskey/store/authorization.php-            }else {
+--
+../code/module/sesskey/store/authorization.php:            $sth->execute();
+../code/module/sesskey/store/authorization.php-            $total = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/sesskey/store/authorization.php-            $result['total'] = $total['TOTAL'];
+../code/module/sesskey/store/authorization.php-            return $result;
+../code/module/sesskey/store/authorization.php-        }
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+../code/module/payment/dao/user_paid_app.php:        return $sth->execute();
+../code/module/payment/dao/user_paid_app.php-    }
+../code/module/payment/dao/user_paid_app.php-	
+../code/module/payment/dao/user_paid_app.php-	public function isUserPay($user_id)
+../code/module/payment/dao/user_paid_app.php-	{
+--
+../code/module/payment/dao/user_paid_app.php:		$sth->execute();
+../code/module/payment/dao/user_paid_app.php-		return $sth->fetchAll();
+../code/module/payment/dao/user_paid_app.php-	}
+../code/module/payment/dao/user_paid_app.php-        
+../code/module/payment/dao/user_paid_app.php-}
+--
+../code/module/payment/dao/payment.php:        return $sth->execute();
+../code/module/payment/dao/payment.php-    }
+../code/module/payment/dao/payment.php-
+../code/module/payment/dao/payment.php-    /**
+../code/module/payment/dao/payment.php-     * findById 
+--
+../code/module/payment/dao/payment.php:        $sth->execute();
+../code/module/payment/dao/payment.php-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/payment/dao/payment.php-        return $result;
+../code/module/payment/dao/payment.php-    }
+../code/module/payment/dao/payment.php-
+--
+../code/module/payment/dao/payment.php:        $sth->execute();
+../code/module/payment/dao/payment.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/payment.php-        if($sth->rowCount() == 0){
+../code/module/payment/dao/payment.php-            $result = 'no_record';
+../code/module/payment/dao/payment.php-        }
+--
+../code/module/payment/dao/payment.php:        $sth->execute();
+../code/module/payment/dao/payment.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/payment.php-        if($sth->rowCount() == 0){
+../code/module/payment/dao/payment.php-            $result = 'no_record';
+../code/module/payment/dao/payment.php-        }
+--
+../code/module/payment/dao/payment.php:        $sth->execute();
+../code/module/payment/dao/payment.php-
+../code/module/payment/dao/payment.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/payment.php-        if($sth->rowCount() == 0){
+../code/module/payment/dao/payment.php-            $result = 'no_record';
+--
+../code/module/payment/dao/payment.php:        // $sth->execute();
+../code/module/payment/dao/payment.php-        // $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/payment.php-        // return $result;
+../code/module/payment/dao/payment.php-    // }
+../code/module/payment/dao/payment.php-    
+--
+../code/module/payment/dao/payment.php:        $sth->execute();
+../code/module/payment/dao/payment.php-        return $sth->fetchAll(PDO::FETCH_ASSOC );
+../code/module/payment/dao/payment.php-    }
+../code/module/payment/dao/payment.php-
+../code/module/payment/dao/payment.php-    public function markSuccess($id, $amount, $pid, $pay_type)
+--
+../code/module/payment/dao/payment.php:            $sth->execute();
+../code/module/payment/dao/payment.php-            //防止并发请求，造成重复通知应用回调接口
+../code/module/payment/dao/payment.php-            $count = $sth->rowCount();
+../code/module/payment/dao/payment.php-            return ($count == 1);
+../code/module/payment/dao/payment.php-        }
+--
+../code/module/payment/dao/payment.php:        return $sth->execute();
+../code/module/payment/dao/payment.php-    }
+../code/module/payment/dao/payment.php-
+../code/module/payment/dao/payment.php-    public function markSNProvided($id)
+../code/module/payment/dao/payment.php-    {
+--
+../code/module/payment/dao/payment.php:        return $sth->execute();
+../code/module/payment/dao/payment.php-    }
+../code/module/payment/dao/payment.php-
+../code/module/payment/dao/payment.php-    /**
+../code/module/payment/dao/payment.php-     * updateDeliveryAddress 
+--
+../code/module/payment/dao/payment.php:        return $sth->execute();
+../code/module/payment/dao/payment.php-    }
+../code/module/payment/dao/payment.php-
+../code/module/payment/dao/payment.php-    /**
+../code/module/payment/dao/payment.php-     * findByHasDeliveryAddress 
+--
+../code/module/payment/dao/payment.php:        $sth->execute();
+../code/module/payment/dao/payment.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/payment.php-        return $result;
+../code/module/payment/dao/payment.php-    }
+../code/module/payment/dao/payment.php-}
+--
+../code/module/payment/dao/sn_record.php:        $sth->execute();
+../code/module/payment/dao/sn_record.php-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/payment/dao/sn_record.php-        return $result['totalnum'];
+../code/module/payment/dao/sn_record.php-
+../code/module/payment/dao/sn_record.php-	}
+--
+../code/module/payment/dao/sn_record.php:				$sth->execute();
+../code/module/payment/dao/sn_record.php-				$re_num = $sth->fetchColumn();				
+../code/module/payment/dao/sn_record.php-				if($re_num==$num)//标识已经发放成功
+../code/module/payment/dao/sn_record.php-				{
+../code/module/payment/dao/sn_record.php-					$sth = $this->Store->prepare('
+--
+../code/module/payment/dao/sn_record.php:					$sth->execute();
+../code/module/payment/dao/sn_record.php-					$result = $sth->fetch(PDO::FETCH_ASSOC);				
+../code/module/payment/dao/sn_record.php-					if($result['is_sn_provided']!=0){
+../code/module/payment/dao/sn_record.php-						return true;
+../code/module/payment/dao/sn_record.php-					}else{
+--
+../code/module/payment/dao/sn_record.php:						$sth->execute();
+../code/module/payment/dao/sn_record.php-						$num = $sth->rowCount();
+../code/module/payment/dao/sn_record.php-						if(!$num){
+../code/module/payment/dao/sn_record.php-							Helper_Logger::getInstance()->log('warning', 'page_pay_internal_provideSN', 'receive' ,'app', 'update payment order failed');	
+../code/module/payment/dao/sn_record.php-						}else{
+--
+../code/module/payment/dao/sn_record.php:					$sth->execute();
+../code/module/payment/dao/sn_record.php-					$num = $sth->rowCount();
+../code/module/payment/dao/sn_record.php-					if(!$num){
+../code/module/payment/dao/sn_record.php-						Helper_Logger::getInstance()->log('warning', 'page_pay_internal_provideSN', 'receive' ,'app', 'update payment order failed');	
+../code/module/payment/dao/sn_record.php-					}else{
+--
+../code/module/payment/dao/sn_record.php:        $sth->execute();
+../code/module/payment/dao/sn_record.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/sn_record.php-        return $result;
+../code/module/payment/dao/sn_record.php-	}
+../code/module/payment/dao/sn_record.php-
+--
+../code/module/payment/dao/sn_record.php:        $sth->execute();
+../code/module/payment/dao/sn_record.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/sn_record.php-        if($sth->rowCount() == 0){
+../code/module/payment/dao/sn_record.php-            $result = array();
+../code/module/payment/dao/sn_record.php-        }
+--
+../code/module/payment/dao/sn_record.php:        $sth->execute();
+../code/module/payment/dao/sn_record.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/sn_record.php-        if($sth->rowCount() == 0){
+../code/module/payment/dao/sn_record.php-            $result = array();
+../code/module/payment/dao/sn_record.php-        }
+--
+../code/module/payment/dao/sn_record.php:        $sth->execute();
+../code/module/payment/dao/sn_record.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/payment/dao/sn_record.php-        if($sth->rowCount() == 0){
+../code/module/payment/dao/sn_record.php-            $result = array();
+../code/module/payment/dao/sn_record.php-        }
+--
+../code/module/payment/dao/sn_record.php:        return $sth->execute();
+../code/module/payment/dao/sn_record.php-    }
+../code/module/payment/dao/sn_record.php-	
+../code/module/payment/dao/sn_record.php-}
+../code/module/payment/dao/sn_record.php-
+--
+../code/module/payment/dao/phonepay_record.php:        return $sth->execute();
+../code/module/payment/dao/phonepay_record.php-    }
+../code/module/payment/dao/phonepay_record.php-
+../code/module/payment/dao/phonepay_record.php-
+../code/module/payment/dao/phonepay_record.php-    /**
+--
+../code/module/payment/dao/phonepay_record.php:        $sth->execute();
+../code/module/payment/dao/phonepay_record.php-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/payment/dao/phonepay_record.php-        return $result;
+../code/module/payment/dao/phonepay_record.php-    }
+../code/module/payment/dao/phonepay_record.php-
+--
+../code/module/payment/dao/phonepay_record.php:        $sth->execute();
+../code/module/payment/dao/phonepay_record.php-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/payment/dao/phonepay_record.php-        return $result;
+../code/module/payment/dao/phonepay_record.php-    }
+../code/module/payment/dao/phonepay_record.php-
+--
+../code/module/payment/dao/platform_record.php:        return $sth->execute();
+../code/module/payment/dao/platform_record.php-    }
+../code/module/payment/dao/platform_record.php-
+../code/module/payment/dao/platform_record.php-
+../code/module/payment/dao/platform_record.php-    /**
+--
+../code/module/payment/dao/platform_record.php:        $sth->execute();
+../code/module/payment/dao/platform_record.php-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/payment/dao/platform_record.php-        return $result;
+../code/module/payment/dao/platform_record.php-    }
+../code/module/payment/dao/platform_record.php-
+--
+../code/module/payment/dao/dian_record.php:        return $sth->execute();
+../code/module/payment/dao/dian_record.php-    }
+../code/module/payment/dao/dian_record.php-
+../code/module/payment/dao/dian_record.php-
+../code/module/payment/dao/dian_record.php-    /**
+--
+--
+--
+--
+../code/module/serial/dao/serial.php:        $sth->execute();
+../code/module/serial/dao/serial.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/serial/dao/serial.php-        if($sth->rowCount() == 0){
+../code/module/serial/dao/serial.php-            $result = array();
+../code/module/serial/dao/serial.php-        }
+--
+../code/module/serial/dao/serial.php:        $sth->execute();
+../code/module/serial/dao/serial.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/serial/dao/serial.php-        if($sth->rowCount() == 0){
+../code/module/serial/dao/serial.php-            $result = array();
+../code/module/serial/dao/serial.php-        }
+--
+../code/module/serial/dao/serial.php:        $sth->execute();
+../code/module/serial/dao/serial.php-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/serial/dao/serial.php-        if($sth->rowCount() == 0){
+../code/module/serial/dao/serial.php-            $result = array();
+../code/module/serial/dao/serial.php-        }
+--
+--
+--
+--
+--
+--
+--
+--
+--
+../code/module/stat/app/sum/day.php:        $sth->execute();
+../code/module/stat/app/sum/day.php-
+../code/module/stat/app/sum/day.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/stat/app/sum/day.php-    }
+../code/module/stat/app/sum/day.php-
+--
+../code/module/stat/app/sum/day.php:            return $sth->execute();
+../code/module/stat/app/sum/day.php-        }
+../code/module/stat/app/sum/day.php-
+../code/module/stat/app/sum/day.php-        $sth = Helper_Factory::getRateInstance()->prepare("
+../code/module/stat/app/sum/day.php-            INSERT INTO `stat_app_sum_day` (
+--
+../code/module/stat/app/sum/day.php:        return $sth->execute();
+../code/module/stat/app/sum/day.php-    }
+../code/module/stat/app/sum/day.php-}
+--
+../code/module/stat/app/day.php:        $sth->execute();
+../code/module/stat/app/day.php-
+../code/module/stat/app/day.php-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/stat/app/day.php-
+../code/module/stat/app/day.php-        if (!empty($result['used_count'])) {
+--
+../code/module/stat/app/day.php:        $sth->execute();
+../code/module/stat/app/day.php-
+../code/module/stat/app/day.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/stat/app/day.php-    }
+../code/module/stat/app/day.php-
+--
+../code/module/stat/app/day.php:        return $sth->execute();
+../code/module/stat/app/day.php-    }
+../code/module/stat/app/day.php-
+../code/module/stat/app/day.php-    public function append(array $data)
+../code/module/stat/app/day.php-    {
+--
+../code/module/stat/app/day.php:            return $sth->execute();
+../code/module/stat/app/day.php-        }
+../code/module/stat/app/day.php-
+../code/module/stat/app/day.php-        $sth = Helper_Factory::getRateInstance()->prepare("
+../code/module/stat/app/day.php-            INSERT INTO `stat_app_day` (
+--
+../code/module/stat/app/day.php:        return $sth->execute();
+../code/module/stat/app/day.php-    }
+../code/module/stat/app/day.php-}
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+../code/module/stat/dao/website.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $ret = false;
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+../code/module/stat/dao/website.php-        }
+--
+../code/module/stat/dao/website.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $ret = false;
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+../code/module/stat/dao/website.php-        }
+--
+../code/module/stat/dao/website.php:            $pstmt->execute($arrBindInfo);
+../code/module/stat/dao/website.php-            $arrResult = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $arrResult = array();
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+--
+../code/module/stat/dao/website.php:            $pstmt->execute($arrBindInfo);
+../code/module/stat/dao/website.php-            $arrResult = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $arrResult = array();
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+--
+../code/module/stat/dao/website.php:            $pstmt->execute($arrBindInfo);
+../code/module/stat/dao/website.php-            $arrResult = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $arrResult = array();
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+--
+../code/module/stat/dao/website.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $ret = false;
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+../code/module/stat/dao/website.php-        }
+--
+../code/module/stat/dao/website.php:            $pstmt->execute();
+../code/module/stat/dao/website.php-            $arrResult = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $arrResult = array();
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+--
+../code/module/stat/dao/website.php:            $pstmt->execute();
+../code/module/stat/dao/website.php-            $arrResult = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+../code/module/stat/dao/website.php-        } catch(Exception $e) {
+../code/module/stat/dao/website.php-            $arrResult = array();
+../code/module/stat/dao/website.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' Error');
+--
+../code/module/stat/dao/paystat.php:            $pstmt->execute($arrBindInfo);
+../code/module/stat/dao/paystat.php-            $arrResult = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+../code/module/stat/dao/paystat.php-        } catch(Exception $e) {
+../code/module/stat/dao/paystat.php-            $arrResult = array();
+../code/module/stat/dao/paystat.php-            Helper_ScribeLogger::writeSqlErrorLog(__METHOD__ . ' error!');
+--
+--
+--
+--
+--
+--
+--
+--
+--
+../code/module/stat/api/sum/day.php:        $sth->execute();
+../code/module/stat/api/sum/day.php-
+../code/module/stat/api/sum/day.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/stat/api/sum/day.php-    }
+../code/module/stat/api/sum/day.php-
+--
+../code/module/stat/api/sum/day.php:            return $sth->execute();
+../code/module/stat/api/sum/day.php-        }
+../code/module/stat/api/sum/day.php-
+../code/module/stat/api/sum/day.php-        $sth = Helper_Factory::getRateInstance()->prepare("
+../code/module/stat/api/sum/day.php-            INSERT INTO `stat_api_sum_day` (
+--
+../code/module/stat/api/sum/day.php:        return $sth->execute();
+../code/module/stat/api/sum/day.php-    }
+../code/module/stat/api/sum/day.php-}
+--
+../code/module/stat/api/day.php:        $sth->execute();
+../code/module/stat/api/day.php-
+../code/module/stat/api/day.php-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+../code/module/stat/api/day.php-    }
+../code/module/stat/api/day.php-
+--
+../code/module/stat/api/day.php:        $sth->execute();
+../code/module/stat/api/day.php-
+../code/module/stat/api/day.php-        return $sth->fetch(PDO::FETCH_ASSOC);
+../code/module/stat/api/day.php-    }
+../code/module/stat/api/day.php-
+--
+../code/module/stat/api/day.php:        return $sth->execute();
+../code/module/stat/api/day.php-    }
+../code/module/stat/api/day.php-
+../code/module/stat/api/day.php-    public function append(array $data)
+../code/module/stat/api/day.php-    {
+--
+../code/module/stat/api/day.php:            return $sth->execute();
+../code/module/stat/api/day.php-        }
+../code/module/stat/api/day.php-
+../code/module/stat/api/day.php-        $sth = Helper_Factory::getRateInstance()->prepare("
+../code/module/stat/api/day.php-            INSERT INTO `stat_api_day` (
+--
+../code/module/stat/api/day.php:        return $sth->execute();
+../code/module/stat/api/day.php-    }
+../code/module/stat/api/day.php-}
+--
+--
+--
+--
+--
+--
+../code/module/lottery/dao/prize.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/lottery/dao/prize.php-        } catch(Exception $e) {
+../code/module/lottery/dao/prize.php-            $ret = false;
+../code/module/lottery/dao/prize.php-            Logger_Logger::instance()->logError(__METHOD__, 'lottery', $e->getMessage());
+../code/module/lottery/dao/prize.php-        }
+--
+../code/module/lottery/dao/prize.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/lottery/dao/prize.php-        } catch(Exception $e) {
+../code/module/lottery/dao/prize.php-            $ret = false;
+../code/module/lottery/dao/prize.php-            Logger_Logger::instance()->logError(__METHOD__, 'lottery', $e->getMessage());
+../code/module/lottery/dao/prize.php-        }
+--
+../code/module/lottery/dao/user_contact.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/lottery/dao/user_contact.php-        } catch(Exception $e) {
+../code/module/lottery/dao/user_contact.php-            $ret = false;
+../code/module/lottery/dao/user_contact.php-            Logger_Logger::instance()->logError(__METHOD__, 'lottery', $e->getMessage());
+../code/module/lottery/dao/user_contact.php-        }
+--
+../code/module/lottery/dao/user_contact.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/lottery/dao/user_contact.php-        } catch(Exception $e) {
+../code/module/lottery/dao/user_contact.php-            $ret = false;
+../code/module/lottery/dao/user_contact.php-            Logger_Logger::instance()->logError(__METHOD__, 'lottery', $e->getMessage());
+../code/module/lottery/dao/user_contact.php-        }
+--
+../code/module/lottery/dao/coupon.php:            $ret = $pstmt->execute($arrBindInfo);
+../code/module/lottery/dao/coupon.php-        } catch(Exception $e) {
+../code/module/lottery/dao/coupon.php-            $ret = false;
+../code/module/lottery/dao/coupon.php-            Logger_Logger::instance()->logError(__METHOD__, 'lottery', $e->getMessage());
+../code/module/lottery/dao/coupon.php-        }
+--
+--
+../code/shell/redis_to_mysql.php:    $sth->execute();
+../code/shell/redis_to_mysql.php-}
+--
+--
+../code/script/serial/serial_command.php:                $sth->execute();
+../code/script/serial/serial_command.php-                $record = $sth->fetch(PDO::FETCH_ASSOC);
+../code/script/serial/serial_command.php-                if($record['remain_num'] <= REMAIN_NUM_ALARM_THRESHOLD) {
+../code/script/serial/serial_command.php-                    $message .= 'APP KEY:'.$app_key." ";
+../code/script/serial/serial_command.php-                    $message .= '产品编号:'.$product_id." ";
+--
+--
+../code/script/auth/auth_command.php:                $sth->execute();
+../code/script/auth/auth_command.php-        
+../code/script/auth/auth_command.php-                list($count) = $sth->fetch();
+../code/script/auth/auth_command.php-        
+../code/script/auth/auth_command.php-                echo "{$server['host']}:{$server['dbname']}/{$table}\t{$count}\n";
+--
+--
+--
+../code/script/message/message_command.php:            if ($sth->execute()){
+../code/script/message/message_command.php-                $num= $sth->fetchAll();
+../code/script/message/message_command.php-                $onedb  = $num[0][0];               
+../code/script/message/message_command.php-                $total += $onedb;
+../code/script/message/message_command.php-                echo "$i db has $onedb ok\n";
+--
+../code/script/message/message_command.php:            $sth->execute();
+../code/script/message/message_command.php-        }
+../code/script/message/message_command.php-    }
+../code/script/message/message_command.php-}
+--
+--
+--
+--
+--
+--
+--
+--
+../code/script/payment/payment_command.php:        $statistic->execute();
+../code/script/payment/payment_command.php-        
+../code/script/payment/payment_command.php-        $data = "<!doctype html><html><head>
+../code/script/payment/payment_command.php-            <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\"/>
+../code/script/payment/payment_command.php-            <style type=\"text/css\">
+--
+../code/script/payment/payment_command.php:        $payment->execute();
+../code/script/payment/payment_command.php-        
+../code/script/payment/payment_command.php-        while($row = $payment->fetch(PDO::FETCH_ASSOC)){
+../code/script/payment/payment_command.php-            $createdTime = date('Y-m-d H:i:s',$row['created_time']);
+../code/script/payment/payment_command.php-            $successTime = (!empty($row['success_time'])) ? date('Y-m-d H:i:s',$row['success_time']) : '';
+--
+../code/script/payment/payment_command.php:        $sth->execute();
+../code/script/payment/payment_command.php-        $result = $sth->fetchAll();
+../code/script/payment/payment_command.php-        
+../code/script/payment/payment_command.php-        foreach($result as $k => $v) {
+../code/script/payment/payment_command.php-            //无账号支付的记录不会在支付请求中产生，
+--
+../code/script/payment/payment_command.php:        $sth->execute();
+../code/script/payment/payment_command.php-        $result = $sth->fetchAll();
+../code/script/payment/payment_command.php-        
+../code/script/payment/payment_command.php-        $this->count_request = array();
+../code/script/payment/payment_command.php-        foreach($result as $k => $v) {
+--
+../code/script/payment/payment_command.php:        $sth->execute();
+../code/script/payment/payment_command.php-        $result = $sth->fetchAll();
+../code/script/payment/payment_command.php-        
+../code/script/payment/payment_command.php-        foreach($result as $k => $v) {
+../code/script/payment/payment_command.php-            $this->count[$v['app_key']][$v['product_id']]['count_notified'] = $v['count_notified'];
+--
+../code/script/payment/payment_command.php:        $sth->execute();
+../code/script/payment/payment_command.php-    }
+../code/script/payment/payment_command.php-    
+../code/script/payment/payment_command.php-    private function insertRecord()
+../code/script/payment/payment_command.php-    {
+--
+../code/script/payment/payment_command.php:                $sth->execute();
+../code/script/payment/payment_command.php-            }
+../code/script/payment/payment_command.php-        }
+../code/script/payment/payment_command.php-    }
+../code/script/payment/payment_command.php-    

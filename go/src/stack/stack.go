@@ -12,6 +12,16 @@ func NewStack() *Stack {
 
 }
 
+func NewDoStack() *DoStack {
+	dos := &DoStack{}
+	dos.s = NewStack()
+	return dos
+}
+
+type DoStack struct {
+	s *Stack
+}
+
 type Stack struct {
 	top int
 	data [10]int
@@ -21,13 +31,25 @@ func (s Stack)Highth() int {
 	return  len(s.data)
 }
 
-func (s *Stack)Push(param ...interface{}) (ret bool) {
+
+func (s *Stack)Pushs(param ...int) (err error) {
+	if(s.Highth()-s.top < len(param)) {
+		err = errors.New("no enough space")
+	}
+	for _,val := range(param) {
+		if err = s.Push(val); err!=nil {
+			return err
+		}
+	}
+	return
+}
+
+func (s *Stack)Push(param int) (err error) {
 	if s.top!=s.Highth() {
 		s.data[s.top] = param
 		s.top++
-		ret = true
 	} else {
-		ret = false
+		err = errors.New("no enough space")
 	}
 	return
 }

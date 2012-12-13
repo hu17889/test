@@ -22,6 +22,7 @@ type DoStack struct {
 	s *Stack
 }
 
+
 type Stack struct {
 	top int
 	data [10]int

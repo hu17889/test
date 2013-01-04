@@ -1,0 +1,26 @@
+#welcome .content
+{
+    text-align:center;
+}
+
+input.nextpage
+{
+    position:absolute;
+    left:60%;
+    text-align:center;
+}
+
+#info table
+{
+    width:50%;
+    border:1px solid;
+}
+
+#info td,#info th
+{
+    border:1px solid;
+}
+
+#info td
+{
+}

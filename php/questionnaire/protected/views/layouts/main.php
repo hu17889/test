@@ -6,6 +6,7 @@
 	<meta name="language" content="en" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/question.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/welcome.css"/>
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
@@ -26,6 +27,7 @@
 
 	<div id="header">
 		<div id="logo">问卷调查</div>
+		<div id="sublogo">----哈尔滨工业大学</div>
 	</div><!-- header -->
 
 	<div id="mainmenu">

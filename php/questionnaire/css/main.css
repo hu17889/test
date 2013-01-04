@@ -47,6 +47,12 @@ body
 	font-size: 200%;
 }
 
+#sublogo
+{
+    width:30%;
+    text-align:right;
+}
+
 #mainmenu
 {
 	background:white url(bg.gif) repeat-x left top;
@@ -227,3 +233,4 @@ div.search-form
 {
 	background: #80CFFF;
 }
+

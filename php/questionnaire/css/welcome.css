@@ -1,26 +1,23 @@
-#welcome .content
-{
-    text-align:center;
-}
+#page_title { text-align:center;}
 
-input.nextpage
-{
-    position:absolute;
-    left:60%;
-    text-align:center;
-}
+#welcome .content { text-align:center; }
 
-#info table
-{
-    width:50%;
-    border:1px solid;
-}
+input.nextpage { position:absolute; left:60%; text-align:center; }
 
-#info td,#info th
-{
-    border:1px solid;
-}
+#direction p { padding-left:20px; padding-right:20px;}
 
-#info td
-{
-}
+#info { clear:both; }
+
+#info .info_pannel { float:left; }
+
+#info table { border:1px solid; }
+
+#info td,#info th { border:1px solid; }
+
+#info .timer { float:left; margin-left:100px; }
+
+#info .timer p { border:1px solide; color:red; font-size:200%; }
+
+#question_pannel { padding-top:20px; }
+
+#question_pannel .answer { padding-left:20px; }

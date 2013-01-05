@@ -1,8 +1,4 @@
-<h1 id="page_title">使用说明及试用</h1>
-<div id="direction">
-<h2>说明:</h2>
-<p>说明内容</p>
-</div>
+<h1 id="page_title">正式问卷1</h1>
 <hr>
 <div id="info">
 <div class="info_pannel">
@@ -22,7 +18,10 @@
 
 <hr>
 <div id="question_pannel">
-<form action="/question/info">
+<form action="/question/info1">
+
+	<?php include "info_question.php";?>
+
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="submit" value="下一步" class="nextpage"/>
 </form>

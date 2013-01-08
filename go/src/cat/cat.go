@@ -5,20 +5,27 @@ import (
     //"fmt"
     "bufio"
     "io"
-    "flag"
+    //"flag"
     "strconv"
 )
 
 
-func Do() (error) {
+func Do(c chan int) (error) {
+    endfunc := func(c chan int) {
+        c<-1
+    }
+    defer endfunc(c)
     // for k,v:=range(os.Args) {
         // println(k,v)
     // }
-    var filePath = flag.String("p","/server/webapps/hucong/test/go/src/main/hello.go","")
-    var hasLineNum = flag.Bool("n",false,"test bool")
-    flag.Parse()
+    //var filePath = flag.String("p","/server/webapps/hucong/test/go/src/main/hello.go","")
+    var filePath string = "/server/webapps/hucong/test/go/src/main/hello.go"
+    //var hasLineNum = flag.Bool("n",false,"test bool")
+    var hasLineNum bool = true
+    //flag.Parse()
 
-    file,err := os.Open(*filePath)
+    file,err := os.Open(filePath)
+    defer file.Close()
     if err!=nil {
         return err
     }
@@ -32,7 +39,7 @@ func Do() (error) {
             return err
         }
 
-        if(*hasLineNum==true) {
+        if(hasLineNum==true) {
             line = strconv.Itoa(i) + " " + line
         }
         os.Stdout.WriteString(line)

@@ -4,6 +4,10 @@ import (
 	"fmt"
 	st "stack"
     mList "m_list"
+    "cat"
+    //rp "runtime/pprof"
+    //"os"
+    "web"
 )
 
 func mymap(doFunc func(int) int,params []int) []int {
@@ -13,23 +17,32 @@ func mymap(doFunc func(int) int,params []int) []int {
     return params
 }
 
+func fi() {
+}
+
 
 
 func main() {
-	// a:=[3]int{1,2,3}
-	// var t = true
-	// s := "string"
-    // fmt.Println(a)
-    // fmt.Println(t)
-    // fmt.Printf("%x",s)
-	// var s *stack.Stack
-	// s := new(st.Stack)
-	// s := st.NewStack()
-	// s.Push(1)
-	// s.Push(2)
-	// s.Pushs(3,4,5)
-    // fmt.Printf("%v",*s)
-	// ret,err := s.Pop()
+    // for k,v:=range(os.Args) {
+        // println(k,v)
+    // }
+
+    w := web.NewWeb()
+    w.TestDial()
+
+    return
+    
+    c := make(chan int)
+    go cat.Do(c)
+    go cat.Do(c)
+    println(<-c)
+    println(<-c)
+    return
+
+    err := cat.Do(c)
+    println(err)
+    return
+
     test := func(param int) int {
         param += 1
         return param
@@ -43,12 +56,5 @@ func main() {
     d := mList.NewDoList()
     d.TestList()
     d.TestMList()
-
-	// ret,err = s.Pop()
-	// println(ret,err)
-	// ret,err = s.Pop()
-	// println(ret,err.Error())
-	// fmt.Print(err)
-    // fmt.Printf("%v",*s)
 
 }

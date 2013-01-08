@@ -27,4 +27,10 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $this->render('info1',$renderParams);
     }
+
+    public function actionEnd()
+    {
+        $renderParams['naireid'] = $this->naireid;
+        $this->render('end',$renderParams);
+    }
 }

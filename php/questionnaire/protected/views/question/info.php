@@ -20,7 +20,7 @@
 <div id="question_pannel">
 <form action="/question/info1">
 
-	<?php include "info_question.php";?>
+    <?php include "info_question.php";?>
 
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="submit" value="下一步" class="nextpage"/>
@@ -29,26 +29,26 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#info td p").hide();
-	$("#info").on("mousedown","td",function(){
-		$(this).children("p").show();
-	});
-	$("#info").on("mouseup","td",function(){
-		$(this).children("p").hide();
-	});
+    $("#info td p").hide();
+    $("#info").on("mousedown","td",function(){
+        $(this).children("p").show();
+    });
+    $("#info").on("mouseup","td",function(){
+        $(this).children("p").hide();
+    });
 
-	$("#info .timer").children("p").text(60);
-	$("#info .start").on("click",function(){
-		var nowTime = 60;
-		var timer = setInterval(showTime,1000);
-		function showTime() {
-			if(nowTime<=0) {
-				clearInterval(timer);
-				return
-			}
-			nowTime--;
-			$("#info .timer").children("p").text(nowTime);
-		}
-	});
+    $("#info .timer").children("p").text(60);
+    $("#info .start").on("click",function(){
+        var nowTime = 60;
+        var timer = setInterval(showTime,1000);
+        function showTime() {
+            if(nowTime<=0) {
+                clearInterval(timer);
+                return
+            }
+            nowTime--;
+            $("#info .timer").children("p").text(nowTime);
+        }
+    });
 });
 </script>

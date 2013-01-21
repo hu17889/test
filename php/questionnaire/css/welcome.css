@@ -1,6 +1,6 @@
 #page_title { text-align:center;}
 
-#welcome .content { text-align:center; padding:30px; }
+#welcome .content { text-align:left; padding:30px; font-size:130%;}
 
 input.nextpage { position:absolute; left:60%; text-align:center; color:red; font-size:200%;}
 
@@ -10,9 +10,10 @@ input.nextpage { position:absolute; left:60%; text-align:center; color:red; font
 
 #info .info_pannel { float:left; }
 
-#info table { border:1px solid; }
+#info table { border:3px outset #DDDDDD; background-color:#DDDDDD; }
 
-#info td,#info th { border:1px solid; }
+#info th { text-align:center;}
+#info td,#info th { border:3px outset  #DDDDDD; width:115px; height:70px; font-size:130%;}
 
 #info .timer { float:left; margin-left:100px; }
 

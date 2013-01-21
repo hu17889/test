@@ -32,11 +32,14 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#info td p").hide();
+	$("#info td").css('background-color','#808080');
 	$("#info").on("mousedown","td",function(){
+		$(this).css('background-color','white');
 		$(this).children("p").show();
 	});
 	$("#info").on("mouseup","td",function(){
-		$(this).children("p").hide();
+		$("#info td").css('background-color','#808080');
+        $("#info td").children("p").hide();
 	});
 
 	$("#info .timer").children("p").text(60);

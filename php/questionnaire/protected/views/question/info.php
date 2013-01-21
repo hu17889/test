@@ -19,13 +19,13 @@
 
 <hr><div id="info">
 <div class="info_pannel">
-<h2>信息版</h2>
+<h2>信息板</h2>
     <table>
-    <tr> <th>等距地点</th> <th>设备受损单位</th> <th>备用电源情况</th> <th>预计抢修时间</th> </tr>
-    <tr> <th>A</th> <td><p>电视台</p></td> <td><p>有，能支持较短时间</p></td> <td><p>3小时</p></td> </tr>
-    <tr> <th>B</th> <td><p>小学</p></td> <td><p>无</p></td> <td><p>5小时</p></td> </tr>
-    <tr> <th>C</th> <td><p>医院</p></td> <td><p>有，能支持一段时间</p></td> <td><p>5小时</p></td> </tr>
-    <tr> <th>D</th> <td><p>高层住宅</p></td> <td><p>无</p></td> <td><p>10小时</p></td> </tr>;
+    <tr> <th></th> <th>等距地点</th> <th>设备受损单位</th> <th>备用电源情况</th> <th>预计抢修时间</th> </tr>
+    <tr> <th>A</th> <td><p>距出入口3小时</p></td> <td><p>电视台</p></td> <td><p>有，能支持8小时</p></td> <td><p>3小时</p></td> </tr>
+    <tr> <th>B</th> <td><p>距出入口2小时</p></td> <td><p>小学</p></td> <td><p>无</p></td> <td><p>5小时</p></td> </tr>
+    <tr> <th>C</th> <td><p>距出入口1小时</p></td> <td><p>医院</p></td> <td><p>有，能支持16小时</p></td> <td><p>5小时</p></td> </tr>
+    <tr> <th>D</th> <td><p>在出入口处</p></td> <td><p>高层住宅</p></td> <td><p>无</p></td> <td><p>10小时</p></td> </tr>
     </table>
 </div>
 <div class="timer">
@@ -49,11 +49,14 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#info td p").hide();
+	$("#info td").css('background-color','#808080');
     $("#info").on("mousedown","td",function(){
+		$(this).css('background-color','white');
         $(this).children("p").show();
     });
     $("#info").on("mouseup","td",function(){
-        $(this).children("p").hide();
+		$("#info td").css('background-color','#808080');
+        $("#info td").children("p").hide();
     });
 
     $("#info .timer").children("p").text(60);

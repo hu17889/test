@@ -22,10 +22,10 @@
 <h2>信息板</h2>
     <table>
     <tr> <th></th> <th>等距地点</th> <th>设备受损单位</th> <th>备用电源情况</th> <th>预计抢修时间</th> </tr>
-    <tr> <th>A</th> <td><p>距出入口3小时</p></td> <td><p>电视台</p></td> <td><p>有，能支持8小时</p></td> <td><p>3小时</p></td> </tr>
-    <tr> <th>B</th> <td><p>距出入口2小时</p></td> <td><p>小学</p></td> <td><p>无</p></td> <td><p>5小时</p></td> </tr>
-    <tr> <th>C</th> <td><p>距出入口1小时</p></td> <td><p>医院</p></td> <td><p>有，能支持16小时</p></td> <td><p>5小时</p></td> </tr>
-    <tr> <th>D</th> <td><p>在出入口处</p></td> <td><p>高层住宅</p></td> <td><p>无</p></td> <td><p>10小时</p></td> </tr>
+    <tr> <th>A</th> <td data-x="1" data-y="1"><p>距出入口3小时</p></td> <td data-x="2" data-y="1"><p>电视台</p></td> <td data-x="3" data-y="1"><p>有，能支持8小时</p></td> <td data-x="4" data-y="1"><p>3小时</p></td> </tr>
+    <tr> <th>B</th> <td data-x="1" data-y="2"><p>距出入口2小时</p></td> <td data-x="2" data-y="2"><p>小学</p></td> <td data-x="3" data-y="2"><p>无</p></td> <td data-x="4" data-y="2"><p>5小时</p></td> </tr>
+    <tr> <th>C</th> <td data-x="1" data-y="3"><p>距出入口1小时</p></td> <td data-x="2" data-y="3"><p>医院</p></td> <td data-x="3" data-y="3"><p>有，能支持16小时</p></td> <td data-x="4" data-y="3"><p>5小时</p></td> </tr>
+    <tr> <th>D</th> <td data-x="1" data-y="4"><p>在出入口处</p></td> <td data-x="2" data-y="4"><p>高层住宅</p></td> <td data-x="3" data-y="4"><p>无</p></td> <td data-x="4" data-y="4"><p>10小时</p></td> </tr>
     </table>
 </div>
 <div class="timer">
@@ -37,6 +37,7 @@
 
 <hr>
 <div id="question_pannel">
+<h2>问题</h2>
 <form action="/question/info1">
 
     <?php include "info_question.php";?>
@@ -46,19 +47,77 @@
 </form>
 </div>
 
+
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#info td p").hide();
-	$("#info td").css('background-color','#808080');
-    $("#info").on("mousedown","td",function(){
-		$(this).css('background-color','white');
-        $(this).children("p").show();
-    });
-    $("#info").on("mouseup","td",function(){
-		$("#info td").css('background-color','#808080');
-        $("#info td").children("p").hide();
-    });
+    INFO_PANEL = {
+        id : '#info',
+        init : function() {
+            // init html css
+            INFO_PANEL_CONTENT.bindevent('mousedown',function() {
+                $.post(
+                    '/Stat/PointStat',
+                    {
+                        type : "down",
+                        qid : "<?php echo htmlspecialchars($naireid);?>",
+                        x : $(this).data("x"),
+                        y : $(this).data("y")
+                    },
+                    function(data) {
+                        console.log(data);
+                    }
+                );
+                INFO_PANEL_CONTENT.show($(this));
+            });
 
+            INFO_PANEL_CONTENT.bindevent('mouseup',function() {
+                $.post(
+                    '/Stat/PointStat',
+                    {
+                        type : "up",
+                        qid : "<?php echo htmlspecialchars($naireid);?>",
+                    },
+                    function(data) {
+                        console.log(data);
+                    }
+                );
+                INFO_PANEL_CONTENT.hideAll();
+            });
+
+            INFO_PANEL_CONTENT.hideAll();
+        },
+    };
+
+    INFO_PANEL_CONTENT = {
+        id : '#info td',
+        
+        /**
+         *  给每个内容块绑定事件
+         */
+        bindevent : function(eventname, func) {
+            $(this.id).on(eventname,func);
+        },
+
+        /**
+         *  隐藏所有内容块的文本
+         */
+        hideAll : function() {
+            $("#info td p").hide();
+            $(this.id).css('background-color','#808080');
+        },
+
+        /**
+         *  展现一个内容块的文本
+         */
+        show : function(item) {
+            item.css('background-color','white');
+            item.children("p").show();
+        }
+    };
+
+    INFO_PANEL.init();
+
+    // 倒计时
     $("#info .timer").children("p").text(60);
     $("#info .start").on("click",function(){
         var nowTime = 60;

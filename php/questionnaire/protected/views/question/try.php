@@ -31,24 +31,29 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+	la_info_end = false;
 	$("#info td p").hide();
 	$("#info td").css('background-color','#808080');
 	$("#info").on("mousedown","td",function(){
-		$(this).css('background-color','white');
-		$(this).children("p").show();
+		if(!la_info_end) {
+			$(this).css('background-color','white');
+			$(this).children("p").show();
+		}
 	});
 	$("#info").on("mouseup","td",function(){
 		$("#info td").css('background-color','#808080');
-        $("#info td").children("p").hide();
+		$("#info td").children("p").hide();
 	});
 
-	$("#info .timer").children("p").text(60);
+	$("#info .timer").children("p").text(5);
 	$("#info .start").on("click",function(){
-		var nowTime = 60;
+		var nowTime = 5;
 		var timer = setInterval(showTime,1000);
 		function showTime() {
 			if(nowTime<=0) {
 				clearInterval(timer);
+				//关闭信息版点击
+				la_info_end=true;
 				return
 			}
 			nowTime--;

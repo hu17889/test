@@ -41,6 +41,7 @@ return array(
                 'urlFormat'=>'path',
                 'rules'=>array(
                     //'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                    'questionnaire/<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                     '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                     '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                 ),
@@ -49,7 +50,14 @@ return array(
                 // 'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
             // ),
             // uncomment the following to use a MySQL database
-            'db'=>include("db.php"),
+            //'db'=>include("db.php"),
+            'db'=>array(
+                'connectionString' => 'mysql:host=10.16.15.79:3306;dbname=questionnaire',
+                'emulatePrepare' => true,
+                'username' => 'open',
+                'password' => '8J6cn4A7f4SC2a7W',
+                'charset' => 'utf8',
+            ),
             'errorHandler'=>array(
                 // use 'site/error' action to display errors
                 'errorAction'=>'site/error',

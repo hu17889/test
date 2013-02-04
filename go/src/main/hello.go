@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	st "stack"
-    mList "m_list"
-    "cat"
+	//"fmt"
+	//st "stack"
+    //mList "m_list"
+    //"cat"
     //rp "runtime/pprof"
     //"os"
     "web"
@@ -28,10 +28,17 @@ func main() {
     // }
 
     w := web.NewWeb()
-    w.TestDial()
+    w.TestListenTcp()
+    // addr,err := w.TestParseIp()
+    // if err!=nil {
+        // fmt.Println(err)
+        // return
+    // }
+    // fmt.Println(addr)
 
     return
     
+    /*
     c := make(chan int)
     go cat.Do(c)
     go cat.Do(c)
@@ -56,5 +63,6 @@ func main() {
     d := mList.NewDoList()
     d.TestList()
     d.TestMList()
+    */
 
 }

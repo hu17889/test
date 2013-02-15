@@ -9,10 +9,10 @@
 
 <script type="text/javascript">
 $(function(){
-	$("#index button").on("click",function(){
-		$exp = new String($(this).val());
-		$id = $exp.replace(/experiment_/,"");
-		location.href="/question/welcome?expid="+$id;
-	});
+    $("#index button").on("click",function(){
+        $exp = new String($(this).val());
+        $id = $exp.replace(/experiment_/,"");
+        location.href="/question/welcome?expid="+$id;
+    });
 });
 </script>

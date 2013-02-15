@@ -5,7 +5,7 @@
  */
 class Controller extends CController
 {
-    protected $naireid;
+
     /**
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
      * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
@@ -22,14 +22,16 @@ class Controller extends CController
      */
     public $breadcrumbs=array();
 
+
+    // 问卷id={rand}
+    protected $naireid;
+    // 实验id={1,2,3,4,5}
+    protected $expid;
+
     protected function beforeAction()
     {
-        $naireid = Yii::app()->request->getParam('naireid',null);
-        if(!isset($naireid)) {
-            $this->naireid = rand(1000000,9999999);
-        } else {
-            $this->naireid = $naireid;
-        }
+        $this->naireid = Yii::app()->request->getParam('naireid',rand(1000000,9999999));
+        $this->expid = Yii::app()->request->getParam('naireid',1);
 
         return true;
     }

@@ -4,6 +4,7 @@
 
 input.nextpage { position:absolute; left:60%; text-align:center; color:red; font-size:200%;}
 
+
 #direction p { padding-left:20px; padding-right:20px;}
 
 #info { clear:both; }
@@ -22,3 +23,5 @@ input.nextpage { position:absolute; left:60%; text-align:center; color:red; font
 #question_pannel { padding-top:20px; }
 
 #question_pannel .answer { padding-left:20px; }
+
+#question_pannel h4 a{ color:black; text-decoration:none;}

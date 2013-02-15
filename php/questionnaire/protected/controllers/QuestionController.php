@@ -26,8 +26,11 @@ class QuestionController extends Controller
     public function actionWelcome()
     {
         $model = new Question();
+        // 初始化
         $model->initQuestionDB($this->naireid);
+
         $renderParams['naireid'] = $this->naireid;
+        $renderParams['expid'] = $this->expid;
         $this->render('welcome',$renderParams);
     }
 
@@ -41,23 +44,46 @@ class QuestionController extends Controller
      */
     public function actionTry()
     {
+        // 点击id初始化
         setcookie("pointid","0");
+
         $renderParams['naireid'] = $this->naireid;
+        $renderParams['expid'] = $this->expid;
         $this->render('try',$renderParams);
     }
 
-    public function actionInfo()
+    /**
+     * actionNaire1
+     *
+     * 问卷1，含信息版
+     * 
+     * @return void
+     */
+    public function actionNaire1()
     {
         $renderParams['naireid'] = $this->naireid;
-        $this->render('info',$renderParams);
+        $renderParams['expid'] = $this->expid;
+        $this->render('questionnaire1',$renderParams);
     }
 
-    public function actionInfo1()
+    public function actionNaire2()
     {
         $model = new Question();
-        $model->saveAnswerInfo($_REQUEST);
+        $model->saveAnswerNaire1($_REQUEST);
+
         $renderParams['naireid'] = $this->naireid;
-        $this->render('info1',$renderParams);
+        $renderParams['expid'] = $this->expid;
+        $this->render('questionnaire2',$renderParams);
+    }
+
+    public function actionNaire3()
+    {
+        $model = new Question();
+        $model->saveAnswerNaire2($_REQUEST);
+
+        $renderParams['naireid'] = $this->naireid;
+        $renderParams['expid'] = $this->expid;
+        $this->render('questionnaire3',$renderParams);
     }
 
     public function actionEnd()

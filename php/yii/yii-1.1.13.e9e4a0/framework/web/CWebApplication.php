@@ -138,9 +138,6 @@ class CWebApplication extends CApplication
 		}
 		else
 			$route=$this->getUrlManager()->parseUrl($this->getRequest());
-        echo "<pre>";
-        var_dump($route);
-        exit;
 		$this->runController($route);
 	}
 

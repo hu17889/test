@@ -46,10 +46,22 @@
     <input type="button" value="下一步" class="nextpage"/>
 </form>
 </div>
-
+<button id="test">随机填写</button>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	// 测试数据填写
+	$("#test").on('click',function() {
+        lastnum = String($("#question_pannel input:radio:last").attr("name"));
+        num = lastnum.replace("q","");
+        for(i=1;i<=num;i++) {
+            val = $("#question_pannel input:radio[name=q"+i+"]:checked");
+            if(val.length==0) {
+				$("#question_pannel input:radio[name=q"+i+"]")[1].checked=true;
+            }
+        }
+	});
+
     // 信息版
     INFO_PANEL = {
         id : '#info',

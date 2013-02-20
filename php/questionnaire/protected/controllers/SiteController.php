@@ -27,8 +27,7 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-        
-		$this->redirect('/questionnaire/question/index');
+		$this->redirect('/question/index');
 	}
 
 	/**

@@ -28,7 +28,8 @@ func main() {
     // }
 
     w := web.NewWeb()
-    w.TestListenTcp()
+    // w.Echo()
+     w.Client()
     // addr,err := w.TestParseIp()
     // if err!=nil {
         // fmt.Println(err)

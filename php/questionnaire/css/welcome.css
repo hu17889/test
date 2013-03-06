@@ -4,8 +4,9 @@
 
 input.nextpage { position:absolute; left:60%; text-align:center; color:red; font-size:200%;}
 
-
 #direction p { padding-left:20px; padding-right:20px;}
+
+#direction strong { font-size:115%;}
 
 #info { clear:both; }
 

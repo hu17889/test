@@ -13,6 +13,9 @@ input.nextpage { position:absolute; left:60%; text-align:center; color:red; font
 #info th { text-align:center;}
 #info td,#info th { border:3px outset  #DDDDDD; width:115px; height:70px; font-size:130%;}
 
+#info .img { float:left; }
+#info .img img { height:60%; width:60%; }
+
 #info .timer {  }
 #info .timer .time_show { border:1px solid; color:red; font-size:200%; }
 #info .timer .time_title{ border:1px; font-size:200%; }

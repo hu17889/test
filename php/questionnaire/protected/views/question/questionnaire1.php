@@ -15,6 +15,7 @@
 <div class="timer">
 <p><span class="time_title">计时器<span> <span class="time_show"></span></p>
 </div>
+<div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/q11.jpg"/></div>
 <div class="info_pannel">
     <table>
     <tr> <th></th> <th>等距地点</th> <th>设备受损单位</th> <th>备用电源情况</th> <th>预计抢修时间</th> </tr>

@@ -7,9 +7,15 @@
 </div>
 
 
-<hr><div id="info">
+<hr>
+<button type="button" class="start_answer">开始答题</button>
+<div id="question_start">
+
+<div id="info">
+<div class="timer">
+<p><span class="time_title">计时器<span> <span class="time_show"></span></p>
+</div>
 <div class="info_pannel">
-<h2>信息板:</h2>
     <table>
     <tr> <th></th> <th>等距地点</th> <th>设备受损单位</th> <th>备用电源情况</th> <th>预计抢修时间</th> </tr>
     <tr> <th>A</th> <td data-x="1" data-y="1"><p>距出入口3小时</p></td> <td data-x="2" data-y="1"><p>电视台</p></td> <td data-x="3" data-y="1"><p>有，能支持8小时</p></td> <td data-x="4" data-y="1"><p>3小时</p></td> </tr>
@@ -18,128 +24,66 @@
     <tr> <th>D</th> <td data-x="1" data-y="4"><p>在出入口处</p></td> <td data-x="2" data-y="4"><p>高层住宅</p></td> <td data-x="3" data-y="4"><p>无</p></td> <td data-x="4" data-y="4"><p>10小时</p></td> </tr>
     </table>
 </div>
-<div class="timer">
-<h2>计时器</h2>
-<p></p>
-<button type="button" class="start">开始计时</button>
-</div>
 </div><!--info-->
 
 <hr>
 <div id="question_pannel">
 <h2>问题</h2>
 <form action="/question/naire2" method="post">
-
     <?php include "questions_1.php";?>
-
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
     <input type="button" value="下一步" class="nextpage"/>
 </form>
-</div>
-<button id="test">随机填写</button>
+</div><!--question_pannel-->
 
+<button id="test">随机填写</button>
+</div><!--question_start-->
+
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/question/sort_question.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	// 测试数据填写
-	$("#test").on('click',function() {
+    $("#question_start").hide();
+    // 信息版初始化
+    INFO_PANEL.init("<?php echo htmlspecialchars($naireid);?>");
+
+
+    // 测试数据填写
+    $("#test").on('click',function() {
         lastnum = String($("#question_pannel input:radio:last").attr("name"));
         num = lastnum.replace("q","");
         for(i=1;i<=num;i++) {
             val = $("#question_pannel input:radio[name=q"+i+"]:checked");
             if(val.length==0) {
-				$("#question_pannel input:radio[name=q"+i+"]")[1].checked=true;
+                $("#question_pannel input:radio[name=q"+i+"]")[1].checked=true;
             }
         }
-	});
+    });
 
-    // 信息版
-    INFO_PANEL = {
-        id : '#info',
-
-        /**
-         *  初始化 信息版展现，事件绑定
-         */
-        init : function() {
-            // init html css
-            INFO_PANEL_CONTENT.bindevent('mousedown',function() {
-                $.post(
-                    '/Stat/PointStat',
-                    {
-                        type : "down",
-                        qid : "<?php echo htmlspecialchars($naireid);?>",
-                        x : $(this).data("x"),
-                        y : $(this).data("y")
-                    },
-                    function(data) {
-                        console.log(data);
-                    }
-                );
-                INFO_PANEL_CONTENT.show($(this));
-            });
-
-            INFO_PANEL_CONTENT.bindevent('mouseup',function() {
-                $.post(
-                    '/Stat/PointStat',
-                    {
-                        type : "up",
-                        qid : "<?php echo htmlspecialchars($naireid);?>",
-                    },
-                    function(data) {
-                        console.log(data);
-                    }
-                );
-                INFO_PANEL_CONTENT.hideAll();
-            });
-
-            INFO_PANEL_CONTENT.hideAll();
-        },
-    };
-
-    // 信息版内容块
-    INFO_PANEL_CONTENT = {
-        id : '#info td',
-        
-        /**
-         *  给每个内容块绑定事件
-         */
-        bindevent : function(eventname, func) {
-            $(this.id).on(eventname,func);
-        },
-
-        /**
-         *  隐藏所有内容块的文本
-         */
-        hideAll : function() {
-            $("#info td p").hide();
-            $(this.id).css('background-color','#808080');
-        },
-
-        /**
-         *  展现一个内容块的文本
-         */
-        show : function(item) {
-            item.css('background-color','white');
-            item.children("p").show();
-        }
-    };
-
-    INFO_PANEL.init();
+    // 开始答题
+    $(".start_answer").on("click",function() {
+        $("#question_start").show(1000);
+        $(this).hide();
+        // 开始计时
+        timer();
+    });
 
     // 倒计时
-    $("#info .timer").children("p").text(60);
-    $("#info .start").on("click",function(){
-        var nowTime = 60;
+    $("#info .timer .time_show").text(5);
+    function timer() {
+        var nowTime = 5;
         var timer = setInterval(showTime,1000);
         function showTime() {
             if(nowTime<=0) {
                 clearInterval(timer);
+                INFO_PANEL.disableEvent();
                 return
             }
             nowTime--;
-            $("#info .timer").children("p").text(nowTime);
+            $("#info .timer .time_show").text(nowTime);
         }
-    });
+    }
 
     // 提交答案
     $("#question_pannel input[type=button]").on("click",function(){

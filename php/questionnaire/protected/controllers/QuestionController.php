@@ -25,9 +25,6 @@ class QuestionController extends Controller
      */
     public function actionWelcome()
     {
-        $model = new Question();
-        // 初始化
-        $model->initQuestionDB($this->naireid);
 
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
@@ -44,6 +41,9 @@ class QuestionController extends Controller
      */
     public function actionTry()
     {
+        // 初始化
+        $model = new Question();
+        $model->initQuestionDB($this->naireid);
         // 点击id初始化
         setcookie("pointid","0");
 
@@ -68,8 +68,8 @@ class QuestionController extends Controller
 
     public function actionNaire2()
     {
-        $model = new Question();
-        $model->saveAnswerNaire1($_REQUEST);
+        // $model = new Question();
+        // $model->saveAnswerNaire1($_REQUEST);
 
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
@@ -78,8 +78,8 @@ class QuestionController extends Controller
 
     public function actionNaire3()
     {
-        $model = new Question();
-        $model->saveAnswerNaire2($_REQUEST);
+        // $model = new Question();
+        // $model->saveAnswerNaire2($_REQUEST);
 
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;

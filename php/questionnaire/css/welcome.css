@@ -5,24 +5,23 @@
 input.nextpage { position:absolute; left:60%; text-align:center; color:red; font-size:200%;}
 
 #direction p { padding-left:20px; padding-right:20px;}
-
 #direction strong { font-size:115%;}
 
 #info { clear:both; }
-
-#info .info_pannel { float:left; }
-
+#info .info_pannel {  }
 #info table { border:3px outset #DDDDDD; background-color:#DDDDDD; }
-
 #info th { text-align:center;}
 #info td,#info th { border:3px outset  #DDDDDD; width:115px; height:70px; font-size:130%;}
 
-#info .timer { float:left; margin-left:100px; }
-
-#info .timer p { border:1px solide; color:red; font-size:200%; }
+#info .timer {  }
+#info .timer .time_show { border:1px solid; color:red; font-size:200%; }
+#info .timer .time_title{ border:1px; font-size:200%; }
 
 #question_pannel { padding-top:20px; }
-
 #question_pannel .answer { padding-left:20px; }
-
 #question_pannel h4 a{ color:black; text-decoration:none;}
+
+.question_sort{ }
+.question_sort .waiting_item,.question_sort .choosed_item { border:1px solid; height:20px;}
+.question_sort .choosed_item { margin-top:3px; }
+.question_sort .item {display:inline; padding:3px; cursor:pointer;}

@@ -6,6 +6,7 @@
 <h2>信息板操作说明:</h2>
 <p>信息隐藏在信息板下面的方框中，要获取该信息，请将鼠标移动到该信息所在方框，按下鼠标，信息就会显现，保持鼠标一直按下，方框就一直处于打开状态。一旦松开鼠标或者移动到其他方框，方框就会关闭信息将被隐藏。</p>
 </div>
+
 <div id="info">
 <div class="info_pannel">
 <div>假设您最近想要买一款手机，市面上有以下四款可供参考， 具体信息如下：</div>
@@ -39,54 +40,45 @@
     </p> </div>
 
     <h4><a name="q2">2. 您认为用信息板来做决策的难易程度是:</a></h4>
-	<div class="answer"> 
-	<p>
+    <div class="answer"> 
+    <p>
     <input type="radio" name="q2" value="1" />1
     <input type="radio" name="q2" value="2"/>2
     <input type="radio" name="q2" value="3"/>3
     <input type="radio" name="q2" value="4"/>4
     <input type="radio" name="q2" value="5"/>5
-	</p> 
-	<p><span>一点也不难</span><span style="padding-left:60px">非常难</span></p>
-	</div>
+    </p> 
+    <p><span>一点也不难</span><span style="padding-left:60px">非常难</span></p>
+    </div>
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
-    <input type="submit" value="下一步" class="nextpage"/>
+    <input type="button" value="下一步" class="nextpage"/>
 </form>
 </div>
 
 <!--<iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XNTE5NTU3NDQw" allowfullscreen></iframe>-->
 
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	la_info_end = false;
-	$("#info td p").hide();
-	$("#info td").css('background-color','#808080');
-	$("#info").on("mousedown","td",function(){
-		if(!la_info_end) {
-			$(this).css('background-color','white');
-			$(this).children("p").show();
-		}
-	});
-	$("#info").on("mouseup","td",function(){
-		$("#info td").css('background-color','#808080');
-		$("#info td").children("p").hide();
-	});
+    // 信息版初始化
+    INFO_PANEL.init();
+    INFO_PANEL.disablePostData();
 
-	$("#info .timer").children("p").text(5);
-	$("#info .start").on("click",function(){
-		var nowTime = 5;
-		var timer = setInterval(showTime,1000);
-		function showTime() {
-			if(nowTime<=0) {
-				clearInterval(timer);
-				//关闭信息版点击
-				la_info_end=true;
-				return
-			}
-			nowTime--;
-			$("#info .timer").children("p").text(nowTime);
-		}
-	});
+    // 提交答案
+    $("#question_pannel input[type=button]").on("click",function(){
+        // 核实没填写的题目
+        lastnum = String($("#question_pannel input:radio:last").attr("name"));
+        num = lastnum.replace("q","");
+        for(i=1;i<=num;i++) {
+            val = $("#question_pannel input:radio[name=q"+i+"]:checked");
+            if(val.length==0) {
+                location.hash="q"+i;
+                return;
+            }
+        }
+        $("#question_pannel form").submit();
+    });
+
 });
 </script>

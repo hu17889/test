@@ -8,7 +8,7 @@
 </div>
 
 <div id="info">
-<div class="info_pannel">
+<div id="pannel1" class="info_pannel">
 <div>假设您最近想要买一款手机，市面上有以下四款可供参考， 具体信息如下：</div>
     <table>
     <tr> <th></th> <th>品牌</th> <th>型号</th> <th>价格</th> <th>是否智能机</th> </tr>
@@ -58,12 +58,13 @@
 
 <!--<iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XNTE5NTU3NDQw" allowfullscreen></iframe>-->
 
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+    <?php include("js/info_panel.js");?>
     // 信息版初始化
-    INFO_PANEL.init();
-    INFO_PANEL.disablePostData();
+    var infoPanelInst1 = INFO_PANEL("#info #pannel1");
+    infoPanelInst1.init("<?php echo htmlspecialchars($naireid);?>");
+    infoPanelInst1.disablePostData();
 
     // 提交答案
     $("#question_pannel input[type=button]").on("click",function(){

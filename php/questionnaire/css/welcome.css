@@ -9,9 +9,9 @@ input.nextpage { position:absolute; left:60%; text-align:center; color:red; font
 
 #info { clear:both; }
 #info .info_pannel {  }
-#info table { border:3px outset #DDDDDD; background-color:#DDDDDD; width:70%;}
-#info th { text-align:center;}
-#info td,#info th { border:3px outset  #DDDDDD; width:100px; height:65px; font-size:100%;}
+.info_pannel table { border:3px outset #DDDDDD; background-color:#DDDDDD; width:70%;}
+.info_pannel th { text-align:center;}
+.info_pannel td,.info_pannel th { border:3px outset  #DDDDDD; width:100px; height:65px; font-size:100%;}
 
 #info .img { float:left; }
 

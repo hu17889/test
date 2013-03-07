@@ -1,18 +1,26 @@
 
 $(document).ready(function(){
-    /*
     function INFO_PANEL(panelId) {
-        this.id=panelId;
-        this.instInfoContent=new INFO_PANEL_CONTENT(pannelId);
-    };
-    function INFO_PANEL_CONTENT(pannelId) {
-        this.id=panelId+" td";
+        function f() {};
+        f.prototype = INFO_PANEL.methods;
+        inst = new f();
+        inst.id = panelId;
+        inst.instInfoContent = INFO_PANEL_CONTENT(pannelId);
+        return inst;
     }
-    */
+
+    function INFO_PANEL_CONTENT(pannelId) {
+        function f() {};
+        f.prototype = INFO_PANEL_CONTENT.methods;
+        inst = new f();
+        inst.id = panelId+" td";
+        inst.eventfunc = {};
+        return inst;
+    }
 
     // 信息版
-    INFO_PANEL = {
-        id : '#info',
+    INFO_PANEL.methods = {
+        //id : '#info',
 
         /**
          *  关闭信息版事件功能
@@ -37,9 +45,9 @@ $(document).ready(function(){
     };
 
     // 信息版内容块
-    INFO_PANEL_CONTENT = {
-        id : '#info td',
-        eventfunc : {},
+    INFO_PANEL_CONTENT.methods = {
+        //id : '#info td',
+        //eventfunc : {},
 
         disableEvent : function() {
             $(this.id).off();

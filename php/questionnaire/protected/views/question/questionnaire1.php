@@ -1,6 +1,7 @@
 
 <div id="direction">
 <h3>请观看视频短片并回答以下问题。</h3>
+<iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XNTE5NTUwNDg4" allowfullscreen></iframe>
 
 <hr>
 <p>强台风过后，现有某一区域有<strong>四个单位</strong>的室外配电设备损坏造成停电，目前<strong>只有一条通路</strong>到这四个单位。假设你是应急抢险队队长，<strong>你的任务</strong>是在台风后的大暴雨来临之前（根据预报大暴雨将在24至48小时内到来）<strong>用尽可能少的时间抢修尽可能多的受损单位</strong>。目前您只有一支抢险队和配套设备，无法两个单位同时抢修，<strong>只能抢修完一个单位再去另一个单位</strong>。由于下大暴雨会导致抢修队无法作业，并且该区域有山体滑坡的隐患，所以当抢修完毕，或暴雨过大时，抢修队需马上撤离，并且<strong>越临近出入口，越安全</strong>。已知四个单位之间是<strong>等距路程</strong>，基本位置如下图表所示。</p>

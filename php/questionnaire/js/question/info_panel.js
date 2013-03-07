@@ -1,5 +1,15 @@
 
 $(document).ready(function(){
+    /*
+    function INFO_PANEL(panelId) {
+        this.id=panelId;
+        this.instInfoContent=new INFO_PANEL_CONTENT(pannelId);
+    };
+    function INFO_PANEL_CONTENT(pannelId) {
+        this.id=panelId+" td";
+    }
+    */
+
     // 信息版
     INFO_PANEL = {
         id : '#info',

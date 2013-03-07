@@ -1,3 +1,4 @@
+    <p>答操作说明：答题时直接点击选项即可，再次点击可以进行上下切换</p>
     <div class="question_sort">
     <h4><a name="q1">1. 请您写下您对A、B、C、D四个单位受损设备的抢修顺序安排。</a></h4> 
     <div class="waiting_item"><strong>选项:</strong><div value="A" class="item">A</div> 

@@ -14,7 +14,6 @@ input.nextpage { position:absolute; left:60%; text-align:center; color:red; font
 #info td,#info th { border:3px outset  #DDDDDD; width:100px; height:65px; font-size:100%;}
 
 #info .img { float:left; }
-#info .img img {  }
 
 #info .timer {  }
 #info .timer .time_show { border:1px solid; color:red; font-size:200%; }

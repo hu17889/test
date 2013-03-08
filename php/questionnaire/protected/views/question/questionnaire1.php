@@ -110,9 +110,9 @@ $(document).ready(function(){
 
 
     // 倒计时
-    $(".timer .time_show").text(5);
+    $(".timer .time_show").text(10);
     function timer() {
-        var nowTime = 5;
+        var nowTime = 10;
         var timer = setInterval(showTime,1000);
         function showTime() {
             if(nowTime<=0) {

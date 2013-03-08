@@ -20,6 +20,10 @@ function INFO_PANEL_CONTENT(panelId) {
 // 信息版
 INFO_PANEL.methods = {
     //id : '#info',
+    show: function() {
+        $(this.id).show();
+    },
+
     hide : function() {
         $(this.id).hide();
     },

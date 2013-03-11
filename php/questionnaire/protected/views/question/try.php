@@ -8,7 +8,7 @@
 </div>
 
 <div id="info">
-<div id="pannel1" class="info_pannel">
+<div id="panel1" class="info_panel">
 <div>假设您最近想要买一款手机，市面上有以下四款可供参考， 具体信息如下：</div>
     <table>
     <tr> <th></th> <th>品牌</th> <th>型号</th> <th>价格</th> <th>是否智能机</th> </tr>
@@ -18,18 +18,10 @@
     <tr> <th>D</th> <td><p>诺基亚</p></td> <td><p>1010</p></td> <td><p>180元</p></td> <td><p>否</p></td> </tr>
     </table>
 </div>
-<!--
-<div class="timer">
-<h2>计时器</h2>
-<p></p>
-<button type="button" class="start">开始计时</button>
-</div>
-</div>
--->
 <!--info-->
 
 <hr>
-<div id="question_pannel">
+<div id="question_panel">
 <form action="/question/naire1" method="post">
     <h4><a name="q1">1.您选择购买的手机是:</a></h4>
     <div class="answer"> <p>
@@ -56,29 +48,35 @@
 </form>
 </div>
 
-<!--<iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XNTE5NTU3NDQw" allowfullscreen></iframe>-->
-
+<script  src="<?php echo Yii::app()->request->baseUrl; ?>/js/require.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-    <?php include("js/info_panel.js");?>
+require.config({
+    paths:{
+        "jquery" : "http://code.jquery.com/jquery-1.9.1.min",
+        "info_panel" : "<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel",
+        "info_panel_content" : "<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel_content",
+    },
+});
+
+require(["jquery","info_panel"],function($,INFO_PANEL) {
     // 信息版初始化
-    var infoPanelInst1 = INFO_PANEL("#info #pannel1");
+    var infoPanelInst1 = INFO_PANEL("#info #panel1");
     infoPanelInst1.init("<?php echo htmlspecialchars($naireid);?>");
     infoPanelInst1.disablePostData();
 
     // 提交答案
-    $("#question_pannel input[type=button]").on("click",function(){
+    $("#question_panel input[type=button]").on("click",function(){
         // 核实没填写的题目
-        lastnum = String($("#question_pannel input:radio:last").attr("name"));
+        lastnum = String($("#question_panel input:radio:last").attr("name"));
         num = lastnum.replace("q","");
         for(i=1;i<=num;i++) {
-            val = $("#question_pannel input:radio[name=q"+i+"]:checked");
+            val = $("#question_panel input:radio[name=q"+i+"]:checked");
             if(val.length==0) {
                 location.hash="q"+i;
                 return;
             }
         }
-        $("#question_pannel form").submit();
+        $("#question_panel form").submit();
     });
 
 });

@@ -20,7 +20,7 @@
 </div>
 <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/q11.jpg"/></div>
 
-<div id="pannel1" class="info_pannel">
+<div id="panel1" class="info_panel">
     <table>
     <tr> <th></th> <th>等距地点</th> <th>设备受损单位</th> <th>备用电源情况</th> <th>预计抢修时间</th> </tr>
     <tr> <th>A</th> <td data-x="1" data-y="1"><p>距出入口3小时</p></td> <td data-x="2" data-y="1"><p>电视台</p></td> <td data-x="3" data-y="1"><p>有，能支持8小时</p></td> <td data-x="4" data-y="1"><p>3小时</p></td> </tr>
@@ -30,12 +30,16 @@
     </table>
 </div>
 
-<div id="pannel2_choose">
+<div id="panel2_choose">
 <div>根据目前的已知信息，如果您可以进行抢修顺序决策，请选择“是”，进行决策；如果您需要更多关于备用电源的信息，请选择“否”，但这会花您一点时间等待来获取更多关于备用电源的确切信息。</div>
-<button type="button" id="pannel2_yes">是</button><button type="button" id="pannel2_no">否</button>
+<button type="button" id="panel2_yes">是</button><button type="button" id="panel2_no">否</button>
 </div>
 
-<div id="pannel2" class="info_pannel">
+<div class="timer2">
+<p><span class="time_title"><span> <span class="time_show"></span>秒后显示备用电源信息</p>
+</div>
+
+<div id="panel2" class="info_panel">
     <table>
     <tr> <th>备用电源使用单位</th> <th>初始蓄电量</th> <th>设备老化程度</th> <th>已使用年限</th> </tr>
     <tr> <th>A</th> <td data-x="1" data-y="1"><p>可供电12小时</p></td> <td data-x="2" data-y="1"><p>每年减少供电1小时</p></td> <td data-x="3" data-y="1"><p>4</p></td> </tr>
@@ -45,47 +49,54 @@
 </div><!--info-->
 
 <hr>
-<div id="question_pannel">
+<div id="question_panel">
 <h2>问题</h2>
 <form action="/question/naire2" method="post">
     <?php include "questions_1.php";?>
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
     <input type="button" value="下一步" class="nextpage"/>
-</formvar >
-</div><!--question_pannel-->
+</form>
+</div><!--question_panel-->
 
 
 <button id="test">随机填写</button>
 </div><!--question_start-->
 
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/question/sort_question.js"></script>
+<script  src="<?php echo Yii::app()->request->baseUrl; ?>/js/require.js"></script>
 <!--<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel.js"></script>;-->
-<script type="text/javascript">
-$(document).ready(function(){
-    <?php include("js/info_panel.js");?>
 
+<script type="text/javascript">
+require.config({
+    paths:{
+        "jquery" : "http://code.jquery.com/jquery-1.9.1.min",
+        "info_panel" : "<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel",
+        "info_panel_content" : "<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel_content",
+    },
+});
+
+require(["jquery","info_panel"],function($,INFO_PANEL) {
 
     $("#question_start").hide();
     // 信息版1初始化
     //INFO_PANEL.init("<?php echo htmlspecialchars($naireid);?>");
-    var infoPanelInst1 = INFO_PANEL("#info #pannel1");
+    var infoPanelInst1 = INFO_PANEL("#info #panel1");
     infoPanelInst1.init("<?php echo htmlspecialchars($naireid);?>");
 
     // 信息版2初始化
-    var infoPanelInst2 = INFO_PANEL("#info #pannel2");
+    var infoPanelInst2 = INFO_PANEL("#info #panel2");
     infoPanelInst2.init("<?php echo htmlspecialchars($naireid);?>");
     infoPanelInst2.disablePostData();
     infoPanelInst2.hide();
 
     // 测试数据填写
     $("#test").on('click',function() {
-        var lastnum = String($("#question_pannel input:radio:last").attr("name"));
+        var lastnum = String($("#question_panel input:radio:last").attr("name"));
         var num = lastnum.replace("q","");
         for(i=1;i<=num;i++) {
-            var val = $("#question_pannel input:radio[name=q"+i+"]:checked");
+            var val = $("#question_panel input:radio[name=q"+i+"]:checked");
             if(val.length==0) {
-                $("#question_pannel input:radio[name=q"+i+"]")[1].checked=true;
+                $("#question_panel input:radio[name=q"+i+"]")[1].checked=true;
             }
         }
     });
@@ -99,23 +110,23 @@ $(document).ready(function(){
     });
 
     // 信息版2按钮
-    $("#pannel2_yes").on("click",function() {
+    $("#panel2_yes").on("click",function() {
         infoPanelInst2.show();
-        $("#pannel2_choose").hide();
+        $("#panel2_choose").hide();
     });
-    $("#pannel2_no").on("click",function() {
+    $("#panel2_no").on("click",function() {
+        $(".timer2").show();
         timer2();
-        $("#pannel2_choose").hide();
+        $("#panel2_choose").hide();
     });
 
-
-    // 倒计时
-    $(".timer .time_show").text(10);
-    function timer() {
-        var nowTime = 10;
-        var timer = setInterval(showTime,1000);
-        function showTime() {
-            if(nowTime<=0) {
+    // 倒计时 
+    $(".timer .time_show").text(10); 
+    function timer() { 
+        var nowTime = 10; 
+        var timer = setInterval(showTime,1000); 
+        function showTime() { 
+            if(nowTime<=0) { 
                 clearInterval(timer);
                 infoPanelInst1.disableEvent();
                 return
@@ -124,6 +135,9 @@ $(document).ready(function(){
             $(".timer .time_show").text(nowTime);
         }
     }
+
+    $(".timer2").hide();
+    $(".timer2 .time_show").text(5); 
     function timer2() {
         var nowTime = 5;
         var timer = setInterval(showTime,1000);
@@ -131,25 +145,35 @@ $(document).ready(function(){
             if(nowTime<=0) {
                 clearInterval(timer);
                 infoPanelInst2.show();
+                $(".timer2").hide();
                 return
             }
             nowTime--;
+            $(".timer2 .time_show").text(nowTime);
         }
     }
 
+    // 多选题
+    $(".question_sort .waiting_item").on("click",".item",function() {
+        $(this).parent(".waiting_item").siblings(".choosed_item").append($(this));
+    });
+    $(".question_sort .choosed_item").on("click",".item",function() {
+        $(this).parent(".choosed_item").siblings(".waiting_item").append($(this));
+    });
+
     // 提交答案
-    $("#question_pannel input[type=button]").on("click",function(){
+    $("#question_panel input[type=button]").on("click",function(){
         // 核实没填写的题目
-        var lastnum = String($("#question_pannel input:radio:last").attr("name"));
+        var lastnum = String($("#question_panel input:radio:last").attr("name"));
         var num = lastnum.replace("q","");
         for(i=1;i<=num;i++) {
-            var val = $("#question_pannel input:radio[name=q"+i+"]:checked");
+            var val = $("#question_panel input:radio[name=q"+i+"]:checked");
             if(val.length==0) {
                 location.hash="q"+i;
                 return;
             }
         }
-        $("#question_pannel form").submit();
+        $("#question_panel form").submit();
     });
 });
 </script>

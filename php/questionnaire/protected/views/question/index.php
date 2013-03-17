@@ -1,9 +1,10 @@
 <div id="index">
-<button value="experiment_1">实验一</button>
-<button value="experiment_2">实验二</button>
-<button value="experiment_3">实验三</button>
-<button value="experiment_4">实验四</button>
-<button value="experiment_5">实验五</button>
+<button value="experiment_1">1对照组</button>
+<button value="experiment_2">2时间压力</button>
+<button value="experiment_3">3模糊信息</button>
+<button value="experiment_4">4积极情绪</button>
+<button value="experiment_5">5消极情绪</button>
+<button value="experiment_6">6压力模糊</button>
 
 </div>
 

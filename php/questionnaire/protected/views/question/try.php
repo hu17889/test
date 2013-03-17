@@ -44,6 +44,7 @@
     </div>
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
+    <input type="hidden" name="savetype" value="<?php echo htmlspecialchars($savetype);?>"/>
     <input type="button" value="下一步" class="nextpage"/>
 </form>
 </div>

@@ -2,7 +2,13 @@
 <div id="direction">
 <h3>请观看视频短片并回答以下问题。</h3>
 <div>
+<?php if(in_array($expid,array(1,2,3,6))):?>
 <iframe style="position:relative;left:20%;" height=548 width=560 frameborder=0 src="http://player.youku.com/embed/XNTE5NTUwNDg4" allowfullscreen></iframe>
+<?php elseif($expid==4):?>
+<iframe style="position:relative;left:20%;" height=498 width=510 src="http://player.youku.com/embed/XNTE5NTQzNjg4" frameborder=0 allowfullscreen></iframe>
+<?php elseif($expid==5):?>
+<iframe style="position:relative;left:20%;" height=498 width=510 src="http://player.youku.com/embed/XNTE5NTU3NDQw" frameborder=0 allowfullscreen></iframe>
+<?php endif;?>
 </div>
 
 <hr>
@@ -51,10 +57,11 @@
 <hr>
 <div id="question_panel">
 <h2>问题</h2>
-<form action="/question/naire2" method="post">
+<form action="/question/<?php echo $next;?>" method="post">
     <?php include "questions_1.php";?>
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
+    <input type="hidden" name="savetype" value="<?php echo htmlspecialchars($savetype);?>"/>
     <input type="button" value="下一步" class="nextpage"/>
 </form>
 </div><!--question_panel-->
@@ -76,6 +83,28 @@ require.config({
 });
 
 require(["jquery","info_panel"],function($,INFO_PANEL) {
+
+    // 各个试验的区别
+    var ltimer1 = true; // 倒计时1开关
+    var expid = <?php echo $expid;?>;
+    switch(expid) {
+    case 1:
+    case 4:
+    case 5:
+        $("#info .timer").css("display","none");
+        ltimer1 = false;
+        $("#panel2_choose").css("display","none");
+        break;
+    case 2:
+        $("#panel2_choose").css("display","none");
+        break;
+    case 3:
+        $("#info .timer").css("display","none");
+        ltimer1 = false;
+        break;
+    default:
+        break;
+    }
 
     $("#question_start").hide();
     // 信息版1初始化
@@ -106,21 +135,25 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
         $("#question_start").show(1000);
         $(this).hide();
         // 开始计时
-        timer();
+        if(ltimer1) {
+            timer();
+        }
     });
 
     // 信息版2按钮
     $("#panel2_yes").on("click",function() {
+        // 立即展现信息版2
         infoPanelInst2.show();
         $("#panel2_choose").hide();
     });
     $("#panel2_no").on("click",function() {
+        // 倒计时后展现信息版2
         $(".timer2").show();
         timer2();
         $("#panel2_choose").hide();
     });
 
-    // 倒计时 
+    // 信息版倒计时 
     $(".timer .time_show").text(10); 
     function timer() { 
         var nowTime = 10; 
@@ -136,6 +169,7 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
         }
     }
 
+    // 信息版2倒计时
     $(".timer2").hide();
     $(".timer2 .time_show").text(5); 
     function timer2() {
@@ -153,7 +187,7 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
         }
     }
 
-    // 多选题
+    // 排序题
     $(".question_sort .waiting_item").on("click",".item",function() {
         $(this).parent(".waiting_item").siblings(".choosed_item").append($(this));
     });
@@ -161,19 +195,53 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
         $(this).parent(".choosed_item").siblings(".waiting_item").append($(this));
     });
 
+
     // 提交答案
     $("#question_panel input[type=button]").on("click",function(){
+        // 整理排序题答案
+        var $sortq= $("#question_panel .question_sort");
+        $.each($sortq,function(index1,value) {
+            var answersort = [];
+            $(value).find(".item").each(function(index2,value) {
+                var qindex = index1+1;
+                var aindex = index2+1;
+                $answerinput = $('<input type="hidden" name="q'+qindex+'_'+aindex+'" value="'+$(value).attr('value')+'"/>');
+                $("#question_panel form").append($answerinput);
+            });
+            //console.log(index,value,sortanswer);
+        });
+
         // 核实没填写的题目
+        lsubmit = true;
+        // 排序题核实
+        var $questionsort = $("#question_panel .question_sort");
+        $questionsort.each(function(index,value) {
+            $temp = $(value).find(".waiting_item .item");
+            if($(value).find(".waiting_item .item").length!=0) {
+                index = index+1;
+                location.hash="q"+index;
+                lsubmit = false;
+                return false;
+            }
+        });
+
+        // 选择题核实
+        var firstnum = String($("#question_panel input:radio:first").attr("name"));
         var lastnum = String($("#question_panel input:radio:last").attr("name"));
-        var num = lastnum.replace("q","");
-        for(i=1;i<=num;i++) {
+        var fnum = firstnum.replace("q","");
+        var lnum = lastnum.replace("q","");
+        for(i=fnum;i<=lnum;i++) {
             var val = $("#question_panel input:radio[name=q"+i+"]:checked");
             if(val.length==0) {
+                lsubmit = false;
                 location.hash="q"+i;
-                return;
+                break
             }
         }
-        $("#question_panel form").submit();
+        // 提交
+        if(lsubmit) {
+            $("#question_panel form").submit();
+        }
     });
 });
 </script>

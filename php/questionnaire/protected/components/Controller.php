@@ -31,7 +31,7 @@ class Controller extends CController
     protected function beforeAction()
     {
         $this->naireid = Yii::app()->request->getParam('naireid',rand(1000000,9999999));
-        $this->expid = Yii::app()->request->getParam('naireid',1);
+        $this->expid = Yii::app()->request->getParam('expid',1);
 
         return true;
     }

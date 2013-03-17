@@ -7,17 +7,47 @@ class Question
      *
      * 初始化问卷db
      * 
-     * @param mixed $qid 
+     * @param mixed $qid 问卷号
+     * @param mixed $expid 实验号
      * @return void
      */
-    public function initQuestionDB($qid)
+    public function initQuestionDB($qid,$expid)
     {
         $db = Yii::app()->db;
         $conn = $db->createCommand();
-        if($conn->insert('questionnaire',array('qid'=>$qid))) {
+        if($conn->insert('questionnaire',array('qid'=>$qid,'exp_id'=>$expid))) {
             return true;
         }
         return false;
+    }
+
+    public function saveAnswer(array $params, $nairetype)
+    {
+        switch($nairetype) {
+            case "try":
+                $this->saveAnswerMultiChoise($params,'q','q0');
+                break;
+            case "info_pannel":
+                $this->saveAnswerMultiChoise($params,'q','q1');
+                break;
+            case "press":
+                $this->saveAnswerMultiChoise($params,'q','q2');
+                break;
+            case "mood":
+                $this->saveAnswerMultiChoise($params,'q','q3');
+                break;
+            case "fuzy":
+                $this->saveAnswerMultiChoise($params,'q','q4');
+                break;
+            case "personel":
+                $this->saveAnswerMultiChoise($params,'q','q5');
+                break;
+            case "end":
+                $db = Yii::app()->db;
+                $conn = $db->createCommand();
+                $conn->update('questionnaire',array("email"=>$params["email"]),"qid = {$params['naireid']}");
+                break;
+        }
     }
 
     /**
@@ -34,28 +64,13 @@ class Question
     {
         $db = Yii::app()->db;
         $conn = $db->createCommand();
-        for($i=1;;$i++) {
-            $key1 = $keyFrom.$i;
-            $key2 = $keyTo.$i;
-            if(empty($params[$key1])) break;
-            $updateData[$key2] = $params[$key1];
+        foreach($params as $key=>$value) {
+            if(!preg_match("/^q\d/",$key)) continue;
+            $dbkey = str_replace($keyFrom,"",$key);
+            $dbkey = $keyTo.$dbkey;
+            $updateData[$dbkey] = $value;
         }
         $conn->update('questionnaire',$updateData,"qid = {$params['naireid']}");
-    }
-
-    public function saveAnswerNaire1(array $params)
-    {
-        $this->saveAnswerMultiChoise($params,'q','q1');
-    }
-
-    public function saveAnswerNaire2(array $params)
-    {
-        $this->saveAnswerMultiChoise($params,'q','q2');
-    }
-
-    public function saveAnswerNaire3(array $params)
-    {
-        $this->saveAnswerMultiChoise($params,'q','q3');
     }
 
     /**
@@ -68,8 +83,9 @@ class Question
      */
     public function savePointStartInfo(array $params)
     {
-        $pointid = isset($_COOKIE["pointid"]) ? $_COOKIE["pointid"]+1 : "0";
-        setcookie("pointid",$pointid);
+        $cache = Yii::app()->cache;
+        $pointid = $cache->get("question_pointid");
+
         $db = Yii::app()->db;
         $conn = $db->createCommand();
         $data = array(
@@ -77,7 +93,7 @@ class Question
             'pid' => $pointid,
             'x' => $params['x'],
             'y' => $params['y'],
-            'start_time' => time(),
+            'start_time' => microtime(true),
         );
         return $conn->insert('points',$data);
     }
@@ -92,13 +108,16 @@ class Question
      */
     public function savePointEndInfo(array $params)
     {
-        $pointid = isset($_COOKIE["pointid"]) ? $_COOKIE["pointid"] : "0";
+        $cache = Yii::app()->cache;
+        $pointid = $cache->get("question_pointid");
+        $cache->set("question_pointid",$pointid+1);
+
         $db = Yii::app()->db;
         $conn = $db->createCommand();
         $pointInfo = $this->getPointsById($params['qid'],$pointid);
-        $intenaltime = time()-$pointInfo[0]['start_time'];
+        $intenaltime = microtime(true)-$pointInfo[0]['start_time'];
         $data = array(
-            'end_time' => time(),
+            'end_time' => microtime(true),
             'time' => $intenaltime,
         );
         $where = array(

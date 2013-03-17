@@ -50,7 +50,7 @@ return array(
             'class' => 'application.extensions.CRedisCache',
             'servers'=>array(
                 array(
-                    'host'=>'10.16.15.63',
+                    'host'=>'127.0.0.1',
                     'port'=>'6379',
                 ),
             ),

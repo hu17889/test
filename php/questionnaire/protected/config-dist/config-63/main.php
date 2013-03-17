@@ -58,6 +58,16 @@ return array(
                 'password' => '8J6cn4A7f4SC2a7W',
                 'charset' => 'utf8',
             ),
+            'cache' => array(
+                'class' => 'application.extensions.CRedisCache',
+                'servers'=>array(
+                    array(
+                        'host'=>'10.16.15.63',
+                        'port'=>'6379',
+                    ),
+                ),
+                'keyPrefix' => '',
+            ),
             'errorHandler'=>array(
                 // use 'site/error' action to display errors
                 'errorAction'=>'site/error',

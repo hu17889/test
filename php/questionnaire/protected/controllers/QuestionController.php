@@ -70,7 +70,6 @@ class QuestionController extends Controller
         $model->saveAnswer($_REQUEST,$_REQUEST['savetype']);
 
         switch($this->expid) {
-        case 1:
         case 2:
         case 6:
             $renderParams["next"] = "naire2";
@@ -78,6 +77,7 @@ class QuestionController extends Controller
         case 3:
             $renderParams["next"] = "naire4";
             break;
+        case 1:
         case 4:
         case 5:
             $renderParams["next"] = "naire3";

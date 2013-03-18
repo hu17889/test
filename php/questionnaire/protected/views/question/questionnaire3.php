@@ -1,4 +1,3 @@
-<h1 id="page_title">情绪问卷</h1>
 <hr>
 <div id="question_panel">
     <form action="/question/<?php echo $next;?>" method="post">

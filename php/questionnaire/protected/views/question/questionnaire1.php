@@ -101,6 +101,11 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
     case 3:
         $("#info .timer").css("display","none");
         ltimer1 = false;
+        $("#question_panel").hide();
+        break;
+    case 6:
+        // 选择是否有信息版2后再答题
+        $("#question_panel").hide();
         break;
     default:
         break;
@@ -143,8 +148,8 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
     // 信息版2按钮
     $("#panel2_yes").on("click",function() {
         // 立即展现信息版2
-        infoPanelInst2.show();
         $("#panel2_choose").hide();
+        $("#question_panel").show();
     });
     $("#panel2_no").on("click",function() {
         // 倒计时后展现信息版2
@@ -180,6 +185,8 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
                 clearInterval(timer);
                 infoPanelInst2.show();
                 $(".timer2").hide();
+                // 开始答题
+                $("#question_panel").show();
                 return
             }
             nowTime--;

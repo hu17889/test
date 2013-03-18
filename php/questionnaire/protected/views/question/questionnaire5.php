@@ -1,4 +1,3 @@
-<h1 id="page_title">个人信息</h1>
 <hr>
 <div id="question_panel">
     <form action="/question/end" method="post">

@@ -29,6 +29,13 @@ class Question
                 break;
             case "info_pannel":
                 $this->saveAnswerMultiChoise($params,'q','q1');
+                $this->saveEndAnswerTime($params);
+
+                $qcache = new QuestionCache($params["naireid"]);
+                list($ds,$vs) = $qcache->getDSVS();
+                $ps = $qcache->getPS();
+                $ci = $qcache->getCI($ds,$vs);
+                $this->saveDSVSPSCI($params["naireid"],$ds,$vs,$ps,$ci);
                 break;
             case "press":
                 $this->saveAnswerMultiChoise($params,'q','q2');
@@ -84,7 +91,7 @@ class Question
     public function savePointStartInfo(array $params)
     {
         $cache = Yii::app()->cache;
-        $pointid = $cache->get("question_pointid");
+        $pointid = $cache->get("question_pointid".$params['qid']);
 
         $db = Yii::app()->db;
         $conn = $db->createCommand();
@@ -109,8 +116,8 @@ class Question
     public function savePointEndInfo(array $params)
     {
         $cache = Yii::app()->cache;
-        $pointid = $cache->get("question_pointid");
-        $cache->set("question_pointid",$pointid+1);
+        $pointid = $cache->get("question_pointid".$params['qid']);
+        $cache->set("question_pointid".$params['qid'],$pointid+1);
 
         $db = Yii::app()->db;
         $conn = $db->createCommand();
@@ -146,6 +153,66 @@ class Question
         $conn->bindParam(":pid",$pid);
         $conn->execute();
         return $conn->queryAll();
+    }
+
+    /**
+     * getNaireById 
+     *
+     * 通过id查询问卷信息
+     * 
+     * @param mixed $qid 
+     * @return void
+     */
+    public function getNaireById($qid)
+    {
+        $db = Yii::app()->db;
+        $sql = "select * from questionnaire where qid=:qid";
+        $conn = $db->createCommand($sql);
+        $conn->bindParam(":qid",$qid);
+        $conn->execute();
+        return $conn->queryAll();
+    }
+
+    /**
+     * saveStartAnswerTime 
+     *
+     * 保存开始答题时间
+     * 
+     * @param mixed $params 
+     * @return void
+     */
+    public function saveStartAnswerTime($params)
+    {
+        $db = Yii::app()->db;
+        $conn = $db->createCommand();
+        $data = array("start_answer_time"=>time());
+        $conn->update('questionnaire',$data,"qid = {$params['qid']}");
+    }
+
+    public function saveEndAnswerTime($params)
+    {
+        $db = Yii::app()->db;
+        $conn = $db->createCommand();
+        $naireInfo = $this->getNaireById($params["naireid"]);
+        $naireInfo = $naireInfo[0];
+        $data = array(
+            "end_answer_time"=>time(),
+            "total_answer_time"=>time()-$naireInfo["start_answer_time"],
+        );
+        $conn->update('questionnaire',$data,"qid = {$params['naireid']}");
+    }
+
+    public function saveDSVSPSCI($qid,$ds,$vs,$ps,$ci)
+    {
+        $db = Yii::app()->db;
+        $conn = $db->createCommand();
+        $data = array(
+            "ds"=>$ds,
+            "ps"=>$ps,
+            "vs"=>$vs,
+            "ci"=>$ci,
+        );
+        $conn->update('questionnaire',$data,"qid = {$qid}");
     }
 }
 

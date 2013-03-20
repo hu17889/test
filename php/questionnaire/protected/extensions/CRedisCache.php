@@ -142,9 +142,6 @@ class CRedisCache extends CCache
      * call unusual method
      * */
     public function __call($method,$args){
-        echo "<pre>";
-        var_dump($this->_cache,$args);
-        exit;
         return call_user_func_array(array($this->_cache,$method),$args);
     }
     /**

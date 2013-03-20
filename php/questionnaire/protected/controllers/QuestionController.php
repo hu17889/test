@@ -46,7 +46,7 @@ class QuestionController extends Controller
         $model->initQuestionDB($this->naireid,$this->expid);
         // 点击id初始化
         $cache = Yii::app()->cache;
-        $cache->set("question_pointid",1);
+        $cache->set("question_pointid".$this->naireid,1);
 
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;

@@ -72,6 +72,9 @@ class QuestionCache
         $cache = Yii::app()->cache;
         $xmove = $cache->get("{$this->naireid}_xmove");
         $ymove = $cache->get("{$this->naireid}_ymove");
+        if(($ymove+$xmove)==0) {
+            return 99;
+        }
         return (float)($ymove-$xmove)/(float)($ymove+$xmove);
     }
 
@@ -82,14 +85,15 @@ class QuestionCache
 
     public function clearCache()
     {
+        $cache = Yii::app()->cache;
         for($x=1;$x<=4;$x++) {
             for($y=1;$y<=4;$y++) {
-                $cache->del("{$this->naireid}_{$x}_{$y}");
+                $cache->delete("{$this->naireid}_{$x}_{$y}");
             }
         }
-        $cache->del("{$this->naireid}_xmove");
-        $cache->del("{$this->naireid}_ymove");
-        $cache->del("{$this->naireid}_last");
+        $cache->delete("{$this->naireid}_xmove");
+        $cache->delete("{$this->naireid}_ymove");
+        $cache->delete("{$this->naireid}_last");
     }
 
 }

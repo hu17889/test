@@ -8,6 +8,7 @@
 
 </div>
 
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
     $("#index button").on("click",function(){

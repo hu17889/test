@@ -13,6 +13,7 @@
 
 <br>
 <button id="test">随机填写</button>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     // 测试数据填写

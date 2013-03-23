@@ -70,13 +70,13 @@
 <button id="test">随机填写</button>
 </div><!--question_start-->
 
-<script  src="<?php echo Yii::app()->request->baseUrl; ?>/js/require.js"></script>
+<script  src="<?php echo Yii::app()->request->baseUrl; ?>/js/require.min.js"></script>
 <!--<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel.js"></script>;-->
 
 <script type="text/javascript">
 require.config({
     paths:{
-        "jquery" : "http://code.jquery.com/jquery-1.9.1.min",
+        "jquery" : "<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.min",
         "info_panel" : "<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel",
         "info_panel_content" : "<?php echo Yii::app()->request->baseUrl; ?>/js/question/info_panel_content",
     },

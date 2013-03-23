@@ -12,6 +12,8 @@ input.nextpage { position:absolute; left:60%; text-align:center; color:red; font
 .info_panel table { border:3px outset #DDDDDD; background-color:#DDDDDD; width:70%;}
 .info_panel th { text-align:center;}
 .info_panel td,.info_panel th { border:3px outset  #DDDDDD; width:100px; height:65px; font-size:100%;}
+.info_panel td {background-color:#808080}
+.info_panel td p {display:none}
 
 #info .img { float:left; }
 

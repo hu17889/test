@@ -3,6 +3,17 @@
 class QuestionController extends Controller
 {
 
+    public function qrender($file,$params=array())
+    {
+        if(isset($_REQUEST["eng"])&&$_REQUEST["eng"]==1) {
+            $this->layout = "main_eng";
+            $file = "eng/{$file}";
+        } else {
+            $file = "chi/{$file}";
+        }
+        $this->render($file,$params);
+    }
+
     /**
      * actionIndex 
      *
@@ -12,6 +23,7 @@ class QuestionController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = "main_eng";
         $this->render('index');
     }
 
@@ -25,10 +37,9 @@ class QuestionController extends Controller
      */
     public function actionWelcome()
     {
-
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
-        $this->render('welcome',$renderParams);
+        $this->qrender('welcome',$renderParams);
     }
 
 
@@ -51,7 +62,8 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'try';
-        $this->render('try',$renderParams);
+        $renderParams['eng'] = isset($_REQUEST["eng"])?$_REQUEST["eng"]:0;
+        $this->qrender('try',$renderParams);
     }
 
     /**
@@ -88,7 +100,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'info_pannel';
-        $this->render('questionnaire1',$renderParams);
+        $this->qrender('questionnaire1',$renderParams);
     }
 
     /**
@@ -119,7 +131,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'press';
-        $this->render('questionnaire2',$renderParams);
+        $this->qrender('questionnaire2',$renderParams);
     }
 
     /**
@@ -148,7 +160,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'mood';
-        $this->render('questionnaire3',$renderParams);
+        $this->qrender('questionnaire3',$renderParams);
     }
 
     /**
@@ -175,7 +187,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'fuzy';
-        $this->render('questionnaire4',$renderParams);
+        $this->qrender('questionnaire4',$renderParams);
     }
 
     /**
@@ -193,7 +205,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'personel';
-        $this->render('questionnaire5',$renderParams);
+        $this->qrender('questionnaire5',$renderParams);
     }
 
     public function actionEnd()
@@ -204,7 +216,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'end';
-        $this->render('end',$renderParams);
+        $this->qrender('end',$renderParams);
     }
 
     public function actionFinish()

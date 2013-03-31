@@ -1,10 +1,15 @@
 <div id="index">
-<button value="experiment_1">1对照组</button>
-<button value="experiment_2">2时间压力</button>
-<button value="experiment_3">3模糊信息</button>
-<button value="experiment_4">4积极情绪</button>
-<button value="experiment_5">5消极情绪</button>
-<button value="experiment_6">6压力模糊</button>
+
+<form action="/question/try" method="post">
+    <input type="checkbox" name="eng"/>English<br/>
+    <input type="hidden" name="expid" value="" />
+    <button value="experiment_1">1Control group</button>
+    <button value="experiment_2">2time pressure group</button>
+    <button value="experiment_3">3fuzzy information group</button>
+    <button value="experiment_4">4positive emotion intervention group</button>
+    <button value="experiment_5">5negative emotion intervention group</button>
+    <button value="experiment_6">6time pressure+fuzzy information group</button>
+</form>
 
 </div>
 
@@ -14,7 +19,9 @@ $(function(){
     $("#index button").on("click",function(){
         $exp = new String($(this).val());
         $id = $exp.replace(/experiment_/,"");
-        location.href="/question/try?expid="+$id;
+        $("form input").val($id)
+        // location.href="/question/try?expid="+$id;
+        $("form").submit();
     });
 });
 </script>

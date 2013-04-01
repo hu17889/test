@@ -31,6 +31,7 @@
 <div class="container" id="page">
 
 	<div id="header">
+		<div id="title_lo" style="position:relative;left:30%;font-size: 150%;">应急情景下应急决策能力研究</div>
 		<div id="logo" style="position:relative;left:5%;font-size: 150%;">Research on Decision Making Capability Under Emergency Situation</div>
 		<div id="sublogo" style="position:relative;left:40%">----Harbin Institute of Technology</div>
 	</div><!-- header -->

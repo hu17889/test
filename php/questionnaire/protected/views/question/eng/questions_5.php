@@ -10,8 +10,8 @@
 
     <h4><a name="q2">2. Your gender: </a></h4>
     <div class="answer"> <p>
-    <input type="radio" name="q2" value="1"/>A. Male 
-    <input type="radio" name="q2" value="2"/>B. Female  
+    <input type="radio" name="q2" value="1"/>Male 
+    <input type="radio" name="q2" value="2"/>Female  
     </p> </div>
 
     <h4><a name="q3">3. Your career：</a></h4>

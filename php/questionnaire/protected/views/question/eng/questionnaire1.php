@@ -30,9 +30,9 @@
 <div id="panel1" class="info_panel">
     <table>
     <tr> <th></th> <th>Equidistant Location</th> <th>Unit with Devices Damaged</th> <th>Spare Power Supply</th> <th>Estimated Repair Time</th> </tr>
-    <tr> <th>A</th> <td data-x="1" data-y="1"><p>3 hours to Entrance/Exit</p></td> <td data-x="2" data-y="1"><p>Television Station </p></td> <td data-x="3" data-y="1"><p>Yes,  extra supply for couples of hours</p></td> <td data-x="4" data-y="1"><p>3 hours</p></td> </tr>
+    <tr> <th>A</th> <td data-x="1" data-y="1"><p>3 hours to Entrance/Exit</p></td> <td data-x="2" data-y="1"><p>Television Station </p></td> <td data-x="3" data-y="1"><p><?php if($expid==3):?>Yes,  extra supply for couples of hours<?php else:?>Yes,  extra supply for 8 hours<?php endif;?></p></td> <td data-x="4" data-y="1"><p>3 hours</p></td> </tr>
     <tr> <th>B</th> <td data-x="1" data-y="2"><p>2 hours to Entrance/Exit</p></td> <td data-x="2" data-y="2"><p>Elementary School</p></td> <td data-x="3" data-y="2"><p>No</p></td> <td data-x="4" data-y="2"><p>5 hours</p></td> </tr>
-    <tr> <th>C</th> <td data-x="1" data-y="3"><p>1 hour to Entrance/Exit</p></td> <td data-x="2" data-y="3"><p>Hospital</p></td> <td data-x="3" data-y="3"><p>Yes, extra supply for some hours</p></td> <td data-x="4" data-y="3"><p>5 hours</p></td> </tr>
+    <tr> <th>C</th> <td data-x="1" data-y="3"><p>1 hour to Entrance/Exit</p></td> <td data-x="2" data-y="3"><p>Hospital</p></td> <td data-x="3" data-y="3"><p><?php if($expid==3):?>Yes, extra supply for some hours<?php else:?>Yes,  extra supply for 16 hours<?php endif;?></p></td> <td data-x="4" data-y="3"><p>5 hours</p></td> </tr>
     <tr> <th>D</th> <td data-x="1" data-y="4"><p>At Entrance/Exit</p></td> <td data-x="2" data-y="4"><p>High –rise Residential Building</p></td> <td data-x="3" data-y="4"><p>No</p></td> <td data-x="4" data-y="4"><p>10 hours</p></td> </tr>
      </table>
 </div>

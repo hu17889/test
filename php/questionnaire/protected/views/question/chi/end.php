@@ -5,5 +5,6 @@
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
     <input type="hidden" name="savetype" value="<?php echo htmlspecialchars($savetype);?>"/>
+    <input type="hidden" name="lang" value="<?php echo htmlspecialchars($lang);?>"/>
     <input type="submit" value="完成" class="nextpage"/>
 <div>

@@ -5,7 +5,7 @@ class QuestionController extends Controller
 
     public function qrender($file,$params=array())
     {
-        if(isset($_REQUEST["eng"])&&$_REQUEST["eng"]==1) {
+        if(isset($_REQUEST["lang"])&&$_REQUEST["lang"]=="eng") {
             $this->layout = "main_eng";
             $file = "eng/{$file}";
         } else {
@@ -62,7 +62,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'try';
-        $renderParams['eng'] = isset($_REQUEST["eng"])?$_REQUEST["eng"]:0;
+        $renderParams['lang'] = isset($_REQUEST["lang"])?$_REQUEST["lang"]:"chi";
         $this->qrender('try',$renderParams);
     }
 
@@ -100,6 +100,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'info_pannel';
+        $renderParams['lang'] = isset($_REQUEST["lang"])?$_REQUEST["lang"]:"chi";
         $this->qrender('questionnaire1',$renderParams);
     }
 
@@ -131,6 +132,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'press';
+        $renderParams['lang'] = isset($_REQUEST["lang"])?$_REQUEST["lang"]:"chi";
         $this->qrender('questionnaire2',$renderParams);
     }
 
@@ -160,6 +162,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'mood';
+        $renderParams['lang'] = isset($_REQUEST["lang"])?$_REQUEST["lang"]:"chi";
         $this->qrender('questionnaire3',$renderParams);
     }
 
@@ -187,6 +190,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'fuzy';
+        $renderParams['lang'] = isset($_REQUEST["lang"])?$_REQUEST["lang"]:"chi";
         $this->qrender('questionnaire4',$renderParams);
     }
 
@@ -205,6 +209,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'personel';
+        $renderParams['lang'] = isset($_REQUEST["lang"])?$_REQUEST["lang"]:"chi";
         $this->qrender('questionnaire5',$renderParams);
     }
 
@@ -216,6 +221,7 @@ class QuestionController extends Controller
         $renderParams['naireid'] = $this->naireid;
         $renderParams['expid'] = $this->expid;
         $renderParams['savetype'] = 'end';
+        $renderParams['lang'] = isset($_REQUEST["lang"])?$_REQUEST["lang"]:"chi";
         $this->qrender('end',$renderParams);
     }
 

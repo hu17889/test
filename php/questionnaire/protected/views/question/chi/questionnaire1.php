@@ -12,7 +12,7 @@
 </div>
 
 <hr>
-<p>强台风过后，现有某一区域有<strong>四个单位</strong>的室外配电设备损坏造成停电，目前<strong>只有一条通路</strong>到这四个单位。假设你是应急抢险队队长，<strong>你的任务</strong>是在台风后的大暴雨来临之前（根据预报大暴雨将在24至48小时内到来）<strong>用尽可能少的时间抢修尽可能多的受损单位</strong>。目前您只有一支抢险队和配套设备，无法两个单位同时抢修，<strong>只能抢修完一个单位再去另一个单位</strong>。由于下大暴雨会导致抢修队无法作业，并且该区域有山体滑坡的隐患，所以当抢修完毕，或暴雨过大时，抢修队需马上撤离，并且<strong>越临近出入口，越安全</strong>。已知四个单位之间是<strong>等距路程</strong>，基本位置如下图表所示。</p>
+<p>强台风过后，现有某一区域有<strong>四个单位</strong>的室外配电设备损坏造成停电，目前<strong>只有一条通路</strong>到这四个单位。假设你是应急抢险队队长，<strong>你的任务</strong>是在台风后的大暴雨来临之前（根据预报大暴雨将在24至48小时内到来）<strong>用尽可能少的时间抢修尽可能多的受损单位</strong>。目前您只有一支抢险队和配套设备，无法两个单位同时抢修，<strong>只能抢修完一个单位再去另一个单位</strong>。由于下大暴雨会导致抢修队无法作业，并且该区域有山体滑坡的隐患，所以当抢修完毕，或暴雨过大时，抢修队需马上撤离，并且<strong>越临近出入口，越安全</strong>。已知四个单位之间是<strong>等距路程</strong>，基本位置如下图表所示。（点击“开始答题”后显现）</p>
 </div>
 
 
@@ -47,9 +47,9 @@
 
 <div id="panel2" class="info_panel">
     <table>
-    <tr> <th>备用电源使用单位</th> <th>初始蓄电量</th> <th>设备老化程度</th> <th>已使用年限</th> </tr>
-    <tr> <th>A</th> <td data-x="1" data-y="1"><p>可供电12小时</p></td> <td data-x="2" data-y="1"><p>每年减少供电1小时</p></td> <td data-x="3" data-y="1"><p>4</p></td> </tr>
-    <tr> <th>B</th> <td data-x="1" data-y="2"><p>可供电24小时</p></td> <td data-x="2" data-y="2"><p>每年减少供电2小时</p></td> <td data-x="3" data-y="2"><p>4</p></td> </tr>
+    <tr> <th></th> <th>备用电源使用单位</th> <th>初始蓄电量</th> <th>设备老化程度</th> <th>已使用年限</th> </tr>
+    <tr> <th>A</th> <td data-x="1" data-y="1"><p>电视台</p></td> <td data-x="2" data-y="1"><p>可供电12小时</p></td> <td data-x="3" data-y="1"><p>每年减少供电1小时</p></td> <td data-x="4" data-y="1"><p>4</p></td> </tr>
+    <tr> <th>C</th> <td data-x="1" data-y="2"><p>医院</p></td> <td data-x="2" data-y="2"><p>可供电24小时</p></td> <td data-x="3" data-y="2"><p>每年减少供电2小时</p></td> <td data-x="4" data-y="2"><p>4</p></td> </tr>
     </table>
 </div>
 </div><!--info-->
@@ -62,6 +62,7 @@
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
     <input type="hidden" name="savetype" value="<?php echo htmlspecialchars($savetype);?>"/>
+    <input type="hidden" name="lang" value="<?php echo htmlspecialchars($lang);?>"/>
     <input type="button" value="下一步" class="nextpage"/>
 </form>
 </div><!--question_panel-->

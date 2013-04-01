@@ -2,7 +2,7 @@
 
 <form action="/question/try" method="post">
     <input type="radio" checked="checked" name="lang" value="eng"/>English<br/>
-    <input type="radio" checked="checked" name="lang" value="chi"/>chinese<br/>
+    <input type="radio" checked="checked" name="lang" value="chi"/>Chinese<br/>
     <input type="hidden" name="expid" value="" />
     <button value="experiment_1">1Control group</button>
     <button value="experiment_2">2time pressure group</button>

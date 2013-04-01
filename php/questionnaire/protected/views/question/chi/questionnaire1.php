@@ -48,8 +48,8 @@
 <div id="panel2" class="info_panel">
     <table>
     <tr> <th></th> <th>备用电源使用单位</th> <th>初始蓄电量</th> <th>设备老化程度</th> <th>已使用年限</th> </tr>
-    <tr> <th>A</th> <td data-x="1" data-y="1"><p>电视台</p></td> <td data-x="2" data-y="1"><p>可供电12小时</p></td> <td data-x="3" data-y="1"><p>每年减少供电1小时</p></td> <td data-x="4" data-y="1"><p>4</p></td> </tr>
-    <tr> <th>C</th> <td data-x="1" data-y="2"><p>医院</p></td> <td data-x="2" data-y="2"><p>可供电24小时</p></td> <td data-x="3" data-y="2"><p>每年减少供电2小时</p></td> <td data-x="4" data-y="2"><p>4</p></td> </tr>
+    <tr> <th>A</th> <td data-x="1" data-y="1"><p>电视台</p></td> <td data-x="2" data-y="1"><p>可供电12小时</p></td> <td data-x="3" data-y="1"><p>每年减少供电1小时</p></td> <td data-x="4" data-y="1"><p>4年</p></td> </tr>
+    <tr> <th>C</th> <td data-x="1" data-y="2"><p>医院</p></td> <td data-x="2" data-y="2"><p>可供电24小时</p></td> <td data-x="3" data-y="2"><p>每年减少供电2小时</p></td> <td data-x="4" data-y="2"><p>4年</p></td> </tr>
     </table>
 </div>
 </div><!--info-->
@@ -170,9 +170,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
     });
 
     // 信息版倒计时 
-    $(".timer .time_show").text(10); 
+    $(".timer .time_show").text(30); 
     function timer() { 
-        var nowTime = 10; 
+        var nowTime = 30; 
         var timer = setInterval(showTime,1000); 
         function showTime() { 
             if(nowTime<=0) { 
@@ -187,9 +187,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
 
     // 信息版2倒计时
     $(".timer2").hide();
-    $(".timer2 .time_show").text(5); 
+    $(".timer2 .time_show").text(10); 
     function timer2() {
-        var nowTime = 5;
+        var nowTime = 10;
         var timer = setInterval(showTime,1000);
         function showTime() {
             if(nowTime<=0) {

@@ -56,7 +56,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by 于明璐.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by Yu Minglu.<br/>
 		All Rights Reserved.<br/>
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->

@@ -17,10 +17,10 @@
 
     <h4><a name="q3">3. To what extent do you feel like facing a disaster via the video episode and emergency scenario? </a></h4>
     <div class="answer"> <p>
-    <input type="radio" name="q3" value="1"/>A.no feeling to disaster
-    <input type="radio" name="q3" value="2"/>B.slight feelings to disaster
-    <input type="radio" name="q3" value="3"/>C. moderate feelings to disaster 
-    <input type="radio" name="q3" value="4"/>D.strong feelings  to disaster
-    <input type="radio" name="q3" value="5"/>E.very intense feelings to disaster
+    <input type="radio" name="q3" value="1"/>no feeling to disaster
+    <input type="radio" name="q3" value="2"/>slight feelings to disaster
+    <input type="radio" name="q3" value="3"/>moderate feelings to disaster 
+    <input type="radio" name="q3" value="4"/>strong feelings  to disaster
+    <input type="radio" name="q3" value="5"/>very intense feelings to disaster
     </p> </div>
 

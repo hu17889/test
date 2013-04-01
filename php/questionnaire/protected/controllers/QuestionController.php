@@ -8,6 +8,8 @@ class QuestionController extends Controller
         if(isset($_REQUEST["lang"])&&$_REQUEST["lang"]=="eng") {
             $this->layout = "main_eng";
             $file = "eng/{$file}";
+        // var_dump($_REQUEST,$file);
+        // exit;
         } else {
             $file = "chi/{$file}";
         }
@@ -23,7 +25,7 @@ class QuestionController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = "main_eng";
+        $this->layout = "main_eng_chi";
         $this->render('index');
     }
 
@@ -75,6 +77,8 @@ class QuestionController extends Controller
      */
     public function actionNaire1()
     {
+        // var_dump($_REQUEST);
+        // exit;
         // echo "<pre>";
         // var_dump($_REQUEST,$_COOKIE);
         // exit;

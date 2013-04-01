@@ -2,7 +2,7 @@
 
 <form action="/question/try" method="post">
     <input type="radio" checked="checked" name="lang" value="eng"/>English<br/>
-    <input type="radio" checked="checked" name="lang" value="chi"/>中文<br/>
+    <input type="radio" name="lang" value="chi"/>中文<br/>
     <input type="hidden" name="expid" value="" />
     <button value="experiment_1">1Control group</button>
     <button value="experiment_2">2time pressure group</button>
@@ -20,7 +20,7 @@ $(function(){
     $("#index button").on("click",function(){
         $exp = new String($(this).val());
         $id = $exp.replace(/experiment_/,"");
-        $("form input").val($id)
+        $("form input[name=expid]").val($id)
         // location.href="/question/try?expid="+$id;
         $("form").submit();
     });

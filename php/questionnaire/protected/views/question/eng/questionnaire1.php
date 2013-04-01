@@ -25,7 +25,7 @@
 <div class="timer">
 <p><span class="time_title">Countdown Timer<span> <span class="time_show"></span></p>
 </div>
-<div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/q11.jpg"/></div>
+<div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/q22.jpg"/></div>
 
 <div id="panel1" class="info_panel">
     <table>
@@ -43,7 +43,7 @@
 </div>
 
 <div class="timer2">
-<p><span class="time_title"><span> Information of Spare Power Supply will appear in<span class="time_show"></span>seconds</p>
+<p><span class="time_title"><span> Information of Spare Power Supply will appear in <span class="time_show" style="font-size:150%"></span> seconds</p>
 </div>
 
 <div id="panel2" class="info_panel">
@@ -57,7 +57,7 @@
 
 <hr>
 <div id="question_panel">
-<h2>问题</h2>
+<h2>Questions</h2>
 <form action="/question/<?php echo $next;?>" method="post">
     <?php include "questions_1.php";?>
     <input type="hidden" name="naireid" value="<?php echo htmlspecialchars($naireid);?>"/>

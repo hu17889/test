@@ -46,6 +46,7 @@
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
     <input type="hidden" name="savetype" value="<?php echo htmlspecialchars($savetype);?>"/>
     <input type="hidden" name="lang" value="<?php echo htmlspecialchars($lang);?>"/>
+    <input type="hidden" name="debug" value="<?php echo htmlspecialchars($debug);?>" />
     <input type="button" value="Next Page" class="nextpage"/>
 </form>
 </div>

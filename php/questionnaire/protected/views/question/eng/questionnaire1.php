@@ -64,12 +64,16 @@
     <input type="hidden" name="expid" value="<?php echo htmlspecialchars($expid);?>"/>
     <input type="hidden" name="savetype" value="<?php echo htmlspecialchars($savetype);?>"/>
     <input type="hidden" name="lang" value="<?php echo htmlspecialchars($lang);?>"/>
+    <input type="hidden" name="debug" value="<?php echo htmlspecialchars($debug);?>" />
     <input type="button" value="Next Page" class="nextpage"/>
 </form>
 </div><!--question_panel-->
 
 
+<?php if(isset($debug)&&$debug==1):?>
 <button id="test">Random Answer</button>
+<?php endif;?>
+
 </div><!--question_start-->
 
 <script  src="<?php echo Yii::app()->request->baseUrl; ?>/js/require.min.js"></script>

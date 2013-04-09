@@ -4,6 +4,7 @@
     <input type="radio" checked="checked" name="lang" value="eng"/>English<br/>
     <input type="radio" name="lang" value="chi"/>中文<br/>
     <input type="hidden" name="expid" value="" />
+    <input type="hidden" name="debug" value="<?php echo htmlspecialchars($debug);?>" />
     <button value="experiment_1">1Control group</button>
     <button value="experiment_2">2time pressure group</button>
     <button value="experiment_3">3fuzzy information group</button>

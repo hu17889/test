@@ -5,6 +5,7 @@ class QuestionController extends Controller
 
     public function qrender($file,$params=array())
     {
+        $params["debug"]=isset($_REQUEST["debug"])&&$_REQUEST["debug"]==1 ? 1 : 0;
         if(isset($_REQUEST["lang"])&&$_REQUEST["lang"]=="eng") {
             $this->layout = "main_eng";
             $file = "eng/{$file}";
@@ -26,7 +27,8 @@ class QuestionController extends Controller
     public function actionIndex()
     {
         $this->layout = "main_eng_chi";
-        $this->render('index');
+        $params["debug"]=isset($_REQUEST["debug"])&&$_REQUEST["debug"]==1 ? 1 : 0;
+        $this->render('index',$params);
     }
 
 

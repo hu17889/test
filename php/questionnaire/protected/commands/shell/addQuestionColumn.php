@@ -25,8 +25,8 @@ $dbh = new PDO($dbconfig['connectionString'], $dbconfig['username'], $dbconfig['
 // $password = '8J6cn4A7f4SC2a7W';
 // $dbh = new PDO($dsn, $user, $password);
 
-for($i=1;$i<=47;$i++) {
-    $name = 'q2'.$i;
+for($i=11;$i<=28;$i++) {
+    $name = 'q3'.$i;
     $sql = "alter table questionnaire add column {$name} int(10) unsigned not null default '0'";
     $pre = $dbh->prepare($sql);
     $ret = $pre->execute();

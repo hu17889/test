@@ -56,7 +56,6 @@ class Question
                 // var_dump($cache->get("{$params["naireid"]}_ymove"));
                 // var_dump($cache->get("{$params["naireid"]}_last"));
                 $qcache->clearCache();
-                exit;
                 $db = Yii::app()->db;
                 $conn = $db->createCommand();
                 $conn->update('questionnaire',array("email"=>$params["email"]),"qid = {$params['naireid']}");

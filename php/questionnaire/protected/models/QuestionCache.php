@@ -73,7 +73,7 @@ class QuestionCache
         $cache = Yii::app()->cache;
         $xmove = $cache->get("{$this->naireid}_xmove");
         $ymove = $cache->get("{$this->naireid}_ymove");
-        $t = (float)($ymove-$xmove)/(float)($ymove+$xmove);
+        // $t = (float)($ymove-$xmove)/(float)($ymove+$xmove);
         // var_dump($xmove,$ymove,$t);
         // exit;
         if(($ymove+$xmove)==0) {

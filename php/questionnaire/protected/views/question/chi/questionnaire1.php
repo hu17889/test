@@ -164,12 +164,16 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
         // 立即展现信息版2
         $("#panel2_choose").hide();
         $("#question_panel").show();
+        $inputYesOrNo = $("<input type='hidden' name='q0' value='1'/>");
+        $("form").append($inputYesOrNo)
     });
     $("#panel2_no").on("click",function() {
         // 倒计时后展现信息版2
         $(".timer2").show();
         timer2();
         $("#panel2_choose").hide();
+        $inputYesOrNo = $("<input type='hidden' name='q0' value='2'/>");
+        $("form").append($inputYesOrNo)
     });
 
     // 信息版倒计时 

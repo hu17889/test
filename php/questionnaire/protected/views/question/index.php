@@ -1,6 +1,6 @@
 <div id="index">
 
-<form action="/question/try" method="post">
+<form action="/question/try" method="get">
     <input type="radio" checked="checked" name="lang" value="eng"/>English<br/>
     <input type="radio" name="lang" value="chi"/>中文<br/>
     <input type="hidden" name="expid" value="" />

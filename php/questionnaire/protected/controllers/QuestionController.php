@@ -3,6 +3,11 @@
 class QuestionController extends Controller
 {
 
+    public function actionDrawPointResult()
+    {
+        $this->render("draw");
+    }
+
     public function qrender($file,$params=array())
     {
         $params["debug"]=isset($_REQUEST["debug"])&&$_REQUEST["debug"]==1 ? 1 : 0;

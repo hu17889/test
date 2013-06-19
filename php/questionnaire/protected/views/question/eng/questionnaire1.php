@@ -175,9 +175,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
     });
 
     // 信息版倒计时 
-    $(".timer .time_show").text(30); 
+    $(".timer .time_show").text(150); 
     function timer() { 
-        var nowTime = 30; 
+        var nowTime = 150; 
         var timer = setInterval(showTime,1000); 
         function showTime() { 
             if(nowTime<=0) { 
@@ -192,9 +192,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
 
     // 信息版2倒计时
     $(".timer2").hide();
-    $(".timer2 .time_show").text(10); 
+    $(".timer2 .time_show").text(15); 
     function timer2() {
-        var nowTime = 10;
+        var nowTime = 15;
         var timer = setInterval(showTime,1000);
         function showTime() {
             if(nowTime<=0) {
@@ -258,6 +258,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
             if(val.length==0) {
                 lsubmit = false;
                 location.hash="q"+i;
+				$("form span[name='noanswer']").empty();
+				$redinfo = $("<span name='noanswer' style='color:red;'>unfinished</span>");
+				$("form a[name='q"+i+"']").after($redinfo);
                 break
             }
         }

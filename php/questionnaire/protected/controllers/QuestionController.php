@@ -17,6 +17,37 @@ class QuestionController extends Controller
         $this->render($file,$params);
     }
 
+	public function actionRand()
+	{
+		$cache = Yii::app()->cache;
+		$expid = $cache->get("last_expid");
+		if(empty($expid)) {
+			$expid = 1;
+		}
+		switch($expid) {
+		case "1":
+			$expid = "2";
+			break;
+		case "2":
+			$expid = "3";
+			break;
+		case "3":
+			$expid = "4";
+			break;
+		case "4":
+			$expid = "5";
+			break;
+		case "5":
+			$expid = "6";
+			break;
+		case "6":
+			$expid = "1";
+			break;
+		}
+		$cache->set("last_expid",$expid);
+		$this->redirect("/question/try?lang=chi&expid={$expid}&debug=0");
+	}
+
     /**
      * actionIndex 
      *

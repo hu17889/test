@@ -46,6 +46,9 @@ $(document).ready(function(){
             if(val.length==0) {
                 lsubmit = false;
                 location.hash="q"+i;
+				$("form span[name='noanswer']").empty();
+				$redinfo = $("<span name='noanswer' style='color:red;'>未答题</span>");
+				$("form a[name='q"+i+"']").after($redinfo);
                 break
             }
         }

@@ -12,7 +12,7 @@
 </div>
 
 <hr>
-<p>强台风过后，现有某一区域有<strong>四个单位</strong>的室外配电设备损坏造成停电，目前<strong>只有一条通路</strong>到这四个单位。假设你是应急抢险队队长，<strong>你的任务</strong>是在台风后的大暴雨来临之前（根据预报大暴雨将在24至48小时内到来）<strong>用尽可能少的时间抢修尽可能多的受损单位</strong>。目前您只有一支抢险队和配套设备，无法两个单位同时抢修，<strong>只能抢修完一个单位再去另一个单位</strong>。由于下大暴雨会导致抢修队无法作业，并且该区域有山体滑坡的隐患，所以当抢修完毕，或暴雨过大时，抢修队需马上撤离，并且<strong>越临近出入口，越安全</strong>。已知四个单位之间是<strong>等距路程</strong>，基本位置如下图表所示。（点击“开始答题”后显现）</p>
+<p>强台风过后，现有某一区域有<strong>四个单位</strong>的室外配电设备损坏造成停电，目前<strong>只有一条通路</strong>到这四个单位。假设你是该区域应急抢修负责人，<strong>你的任务</strong>是在台风后的大暴雨来临之前（根据预报大暴雨将在24至48小时内到来）<strong>用尽可能少的时间抢修尽可能多的受损单位</strong>。目前您只有一支抢险队和配套设备，无法两个单位同时抢修，<strong>只能抢修完一个单位再去另一个单位</strong>。由于下大暴雨会导致抢修队无法作业，并且该区域有山体滑坡的隐患，所以当抢修完毕，或暴雨过大时，抢修队需马上撤离，并且<strong>越临近出入口，越安全</strong>。已知四个单位之间是<strong>等距路程</strong>，基本位置如下图表所示。（点击“开始答题”后显现）</p>
 </div>
 
 
@@ -29,9 +29,9 @@
 <div id="panel1" class="info_panel">
     <table>
     <tr> <th></th> <th>等距地点</th> <th>设备受损单位</th> <th>备用电源情况</th> <th>预计抢修时间</th> </tr>
-	<tr> <th>A</th> <td data-x="1" data-y="1"><p>距出入口3小时</p></td> <td data-x="2" data-y="1"><p>电视台</p></td> <td data-x="3" data-y="1"><p><?php if($expid==3):?>有，能支持一段时间<?php else:?>有，能支持8小时<?php endif;?></p></td> <td data-x="4" data-y="1"><p>3小时</p></td> </tr>
+	<tr> <th>A</th> <td data-x="1" data-y="1"><p>距出入口3小时</p></td> <td data-x="2" data-y="1"><p>电视台</p></td> <td data-x="3" data-y="1"><p><?php if($expid==3||$expid==6):?>有，能支持一段时间<?php else:?>有，能支持8小时<?php endif;?></p></td> <td data-x="4" data-y="1"><p>3小时</p></td> </tr>
     <tr> <th>B</th> <td data-x="1" data-y="2"><p>距出入口2小时</p></td> <td data-x="2" data-y="2"><p>小学</p></td> <td data-x="3" data-y="2"><p>无</p></td> <td data-x="4" data-y="2"><p>5小时</p></td> </tr>
-    <tr> <th>C</th> <td data-x="1" data-y="3"><p>距出入口1小时</p></td> <td data-x="2" data-y="3"><p>医院</p></td> <td data-x="3" data-y="3"><p><?php if($expid==3):?>有，能支持较长时间<?php else:?>有，能支持16小时<?php endif;?></p></td> <td data-x="4" data-y="3"><p>5小时</p></td> </tr>
+    <tr> <th>C</th> <td data-x="1" data-y="3"><p>距出入口1小时</p></td> <td data-x="2" data-y="3"><p>医院</p></td> <td data-x="3" data-y="3"><p><?php if($expid==3||$expid==6):?>有，能支持较长时间<?php else:?>有，能支持16小时<?php endif;?></p></td> <td data-x="4" data-y="3"><p>5小时</p></td> </tr>
     <tr> <th>D</th> <td data-x="1" data-y="4"><p>在出入口处</p></td> <td data-x="2" data-y="4"><p>高层住宅</p></td> <td data-x="3" data-y="4"><p>无</p></td> <td data-x="4" data-y="4"><p>10小时</p></td> </tr>
     </table>
 </div>
@@ -177,9 +177,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
     });
 
     // 信息版倒计时 
-    $(".timer .time_show").text(30); 
+    $(".timer .time_show").text(150); 
     function timer() { 
-        var nowTime = 30; 
+        var nowTime = 150; 
         var timer = setInterval(showTime,1000); 
         function showTime() { 
             if(nowTime<=0) { 
@@ -194,9 +194,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
 
     // 信息版2倒计时
     $(".timer2").hide();
-    $(".timer2 .time_show").text(10); 
+    $(".timer2 .time_show").text(15); 
     function timer2() {
-        var nowTime = 10;
+        var nowTime = 15;
         var timer = setInterval(showTime,1000);
         function showTime() {
             if(nowTime<=0) {
@@ -260,6 +260,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
             if(val.length==0) {
                 lsubmit = false;
                 location.hash="q"+i;
+				$("form span[name='noanswer']").empty();
+				$redinfo = $("<span name='noanswer' style='color:red;'>未答题</span>");
+				$("form a[name='q"+i+"']").after($redinfo);
                 break
             }
         }

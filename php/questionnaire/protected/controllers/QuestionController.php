@@ -5,7 +5,16 @@ class QuestionController extends Controller
 
     public function actionDrawPointResult()
     {
-        $this->render("draw");
+        $qid = empty($_REQUEST['qid']) ? "" : $_REQUEST['qid'];
+        $qmodel = new Question;
+        $points = array();
+        if(!empty($qid)) {
+            $points = $qmodel->getPointsByNaireId($qid);
+        }
+        // echo "<pre>";
+        // var_dump($qid, $points);
+        // exit;
+        $this->render("draw", array('points'=>$points));
     }
 
     public function qrender($file,$params=array())

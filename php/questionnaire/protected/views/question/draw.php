@@ -1,7 +1,31 @@
 <!--<canvas id = "myCanvas" width="600" height="600" style="border:2px solid;">Canvas画线技巧</canvas>-->
+<form>
+问卷id:<input type="text" name="qid" value=""/>
+<input type="submit">
+</form>
+
 <div id="container"></div>
 <script src="/js/kinetic.js"></script>
 <script defer="defer">
+// x,y =>
+pointMap = {
+    "1_1" : [7,1],
+    "2_1" : [5,1],
+    "3_1" : [5,3],
+    "4_1" : [7,3],
+    "1_2" : [3,1],
+    "2_2" : [1,1],
+    "3_2" : [1,3],
+    "4_2" : [3,3],
+    "1_3" : [3,5],
+    "2_3" : [1,5],
+    "3_3" : [1,7],
+    "4_3" : [3,7],
+    "1_4" : [7,5],
+    "2_4" : [5,5],
+    "3_4" : [5,7],
+    "4_4" : [7,7]
+};
 width = height = 600;
 
 var stage = new Kinetic.Stage({
@@ -44,7 +68,12 @@ for(i=1;i<8;i+=2) {
 }
 stage.add(layer);
 
-points = [[width/8,height/8],[3*width/8,5*height/8],[7*width/8,5*height/8]];
+//points = [[width/8,height/8],[3*width/8,5*height/8],[7*width/8,5*height/8]];
+points = [];
+<?php foreach($points as $point) {?>
+p = pointMap["<?php echo $point["x"];?>_<?php echo $point["y"];?>"];
+points.push([p[0]*width/8,p[1]*height/8]);
+<?php } ?>
 num = 0;
 p0 = points[0];
 p1 = points[1];
@@ -79,32 +108,4 @@ anim.start();
 
 
 
-x = function() {
-height = width = 600;
-var myCanvas = document.getElementById("myCanvas");
-var context =  myCanvas.getContext("2d");
-context.strokeStyle = "rgba(255,0,0,1)";
-context.fillStyle = "#FF0000";
-//x轴
-context.moveTo(width/2, 0);
-context.lineTo(width/2, height);
-//y轴
-context.moveTo(0, height/2);
-context.lineTo(width, height/2);
-context.stroke();//画线
-context.restore();
-
-context.beginPath();
-context.strokeStyle = "rgba(0,0,255,1)";
-context.moveTo(width/4, 0);
-context.lineTo(width/4, height);
-context.moveTo(3*width/4, 0);
-context.lineTo(3*width/4, height);
-
-//context.fill();//填充
-context.stroke();//画线
-//context.beginPath(); //清空子路径
-//context.closePath(); //闭合路径
-
-};
 </script>

@@ -26,6 +26,7 @@ class QuestionController extends Controller
         // var_dump($_REQUEST,$file);
         // exit;
         } else {
+            $this->layout = "main_chi";
             $file = "chi/{$file}";
         }
         $this->render($file,$params);

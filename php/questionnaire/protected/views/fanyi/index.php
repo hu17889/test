@@ -34,10 +34,6 @@
     $("#addnew").on('click',function(){
         window.location.href="/fanyi/add";
     });
-    $(".modify").on('click',function(){
-        $id = $(this).parents("tr").children(".td_id").text();
-        window.location.href="/fanyi/edit?id="+$id;
-    });
     $countElems = <?php echo count($entitys);?>;
     $countPerPage = 50;
     tbody = new Array();
@@ -63,6 +59,10 @@
             $content += tbody[i];
         }
         $("#wordlist").html($content);
+        $(".modify").on('click',function(){
+            $id = $(this).parents("tr").children(".td_id").text();
+            window.location.href="/fanyi/edit?id="+$id;
+        });
     }
     $("#pagination").pagination($countElems, {
         items_per_page:$countPerPage,

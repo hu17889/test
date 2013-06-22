@@ -8,9 +8,9 @@ class FanyiController extends Controller
         $this->layout = "fanyi";
         $wordmap = new WordMap;
         $allwords = array();
-        if(!empty($_REQUEST['all'])) 
+        if(empty($_REQUEST) || !empty($_REQUEST['all'])) {
             $allwords = $wordmap->findAll();
-        elseif(!empty($_REQUEST['query'])&&(!empty($_REQUEST['eng_word'])||!empty($_REQUEST['chi_word']))) {
+        } elseif(!empty($_REQUEST['query'])&&(!empty($_REQUEST['eng_word'])||!empty($_REQUEST['chi_word']))) {
             $sql = "select * from proword_map where";
             if(!empty($_REQUEST['chi_word'])) {
                 $sql .= "  chi1 like '%{$_REQUEST['chi_word']}%' 

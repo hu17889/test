@@ -5,6 +5,7 @@ class QuestionController extends Controller
 
     public function actionDrawPointResult()
     {
+        $this->layout = "main_chi";
         $qid = empty($_REQUEST['qid']) ? "" : $_REQUEST['qid'];
         $qmodel = new Question;
         $points = array();

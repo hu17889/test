@@ -21,22 +21,15 @@
         <th width="5%" style='text-align:left'>操作</th>
     </tr>
     </thead>
-    <tbody class="center">
-    <?php  foreach($entitys as $e) { ?>
-        <tr>
-        <td class='td_id'><?php echo htmlspecialchars($e['id']);?></td>
-        <td class='td'><?php echo htmlspecialchars($e['eng']);?></td>
-        <td class='td'><?php echo htmlspecialchars($e['chi1']);?></td>
-        <td class='td'><?php echo htmlspecialchars($e['chi2']);?></td>
-        <td class='td'><?php echo htmlspecialchars($e['chi3']);?></td>
-        <td class='td'><?php echo htmlspecialchars($e['chapter']);?></td>
-        <td class='td'><?php echo htmlspecialchars($e['other']);?></td>
-        <td class='td'><button class="modify">修改</button></td>
-        </tr>
-    <?php } ?>
+    <tbody id="wordlist" class="center">
     </tbody>
 </table>
+<div id="pagination" class="pagination"></div>
+
+<script src="/js/jquery.pagination.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/pagination.css"/>
 <script>
+
 (function($){
     $("#addnew").on('click',function(){
         window.location.href="/fanyi/add";
@@ -44,6 +37,36 @@
     $(".modify").on('click',function(){
         $id = $(this).parents("tr").children(".td_id").text();
         window.location.href="/fanyi/edit?id="+$id;
+    });
+    $countElems = <?php echo count($entitys);?>;
+    $countPerPage = 50;
+    tbody = new Array();
+        <?php  foreach($entitys as $e) { ?>
+            content = " <tr id='tr_<?php echo htmlspecialchars($e['id']);?>'>"
+                + "<td class='td_id'><?php echo htmlspecialchars($e['id']);?></td>"
+                + "<td class='td'><?php echo htmlspecialchars($e['eng']);?></td>"
+                + "<td class='td'><?php echo htmlspecialchars($e['chi1']);?></td>"
+                + "<td class='td'><?php echo htmlspecialchars($e['chi2']);?></td>"
+                + "<td class='td'><?php echo htmlspecialchars($e['chi3']);?></td>"
+                + "<td class='td'><?php echo htmlspecialchars($e['chapter']);?></td>"
+                + "<td class='td'><?php echo htmlspecialchars($e['other']);?></td>"
+                + "<td class='td'><button class='modify'>修改</button></td>"
+                + "</tr>";
+            tbody.push(content);
+        <?php } ?>
+
+    // 分页
+    loadContents = function(page) {
+        max = (page+1)*$countPerPage;
+        $content = '';
+        for(i=page*$countPerPage;i<max;i++) {
+            $content += tbody[i];
+        }
+        $("#wordlist").html($content);
+    }
+    $("#pagination").pagination($countElems, {
+        items_per_page:$countPerPage,
+        callback:loadContents
     });
 })(jQuery);
 </script>

@@ -28,6 +28,10 @@ class FanyiController extends Controller
         $this->render('index',array('entitys'=>$allwords));
     }
 
+    public function actionList()
+    {
+    }
+
     public function actionAdd()
     {
         $this->layout = "fanyi";

@@ -45,6 +45,14 @@ return array(
 			'password' => 'hu868811',
 			'charset' => 'utf8',
 		),
+		'db'=>array(
+            'class'=>'system.db.CDbConnection',
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=fanyi',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => 'hu868811',
+			'charset' => 'utf8',
+		),
 
         'cache' => array(
             'class' => 'application.extensions.CRedisCache',

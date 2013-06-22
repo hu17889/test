@@ -28,7 +28,6 @@ return array(
             'ipFilters'=>array('127.0.0.1','::1'),
         ),
          */
-		'test',
         ),
 
         // application components
@@ -53,6 +52,14 @@ return array(
             // uncomment the following to use a MySQL database
             'db'=>array(
                 'connectionString' => 'mysql:host=10.16.15.79:3306;dbname=questionnaire',
+                'emulatePrepare' => true,
+                'username' => 'open',
+                'password' => '8J6cn4A7f4SC2a7W',
+                'charset' => 'utf8',
+            ),
+            'db_fanyi'=>array(
+                'class'=>'system.db.CDbConnection',
+                'connectionString' => 'mysql:host=10.16.15.79:3306;dbname=fanyi',
                 'emulatePrepare' => true,
                 'username' => 'open',
                 'password' => '8J6cn4A7f4SC2a7W',

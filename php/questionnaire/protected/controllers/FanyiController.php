@@ -22,7 +22,7 @@ class FanyiController extends Controller
         $wordmap = new WordMap;
         $allwords = array();
         if((!isset($_REQUEST['eng_word']) && !isset($_REQUEST['chi_word'])) || !empty($_REQUEST['all'])) {
-            $allwords = $wordmap->findAll();
+            $allwords = $wordmap->findAll('1=1 order by eng ');
         } elseif(!empty($_REQUEST['query'])&&(!empty($_REQUEST['eng_word'])||!empty($_REQUEST['chi_word']))) {
             $sql = "select * from proword_map where";
             if(!empty($_REQUEST['chi_word'])) {

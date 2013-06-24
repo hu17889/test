@@ -24,6 +24,8 @@
     <tbody id="wordlist" class="center">
     </tbody>
 </table>
+
+<div ></div>
 <div id="pagination" class="pagination"></div>
 
 <script src="/js/jquery.pagination.js"></script>
@@ -38,6 +40,7 @@
     $countPerPage = 50;
     tbody = new Array();
         <?php  foreach($entitys as $e) { ?>
+            <?php if(!empty($e)) {?>
             content = " <tr id='tr_<?php echo htmlspecialchars($e['id']);?>'>"
                 + "<td class='td_id'><?php echo htmlspecialchars($e['id']);?></td>"
                 + "<td class='td'><?php echo htmlspecialchars($e['eng']);?></td>"
@@ -49,6 +52,7 @@
                 + "<td class='td'><button class='modify'>修改</button></td>"
                 + "</tr>";
             tbody.push(content);
+            <?php } ?>
         <?php } ?>
 
     // 分页
@@ -56,6 +60,7 @@
         max = (page+1)*$countPerPage;
         $content = '';
         for(i=page*$countPerPage;i<max;i++) {
+            if(tbody[i]==undefined) continue;
             $content += tbody[i];
         }
         $("#wordlist").html($content);

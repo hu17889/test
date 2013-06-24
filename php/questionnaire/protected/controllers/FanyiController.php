@@ -2,13 +2,26 @@
 
 class FanyiController extends Controller
 {
+    public function beforeAction()
+    {
+        
+        $this->layout = "fanyi";
+        $ret = preg_match("/^\/fanyi\/login/",$_SERVER['REQUEST_URI']);
+        if($ret) return true;
+        $login = new Login;
+        $ret = $login->isLogin();
+        // var_dump($ret);
+        // exit;
+        if(!$ret) $this->redirect('/fanyi/login?url='.urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']));
+        return true;
+    }
 
     public function actionIndex()
     {
         $this->layout = "fanyi";
         $wordmap = new WordMap;
         $allwords = array();
-        if(empty($_REQUEST) || !empty($_REQUEST['all'])) {
+        if((!isset($_REQUEST['eng_word']) && !isset($_REQUEST['chi_word'])) || !empty($_REQUEST['all'])) {
             $allwords = $wordmap->findAll();
         } elseif(!empty($_REQUEST['query'])&&(!empty($_REQUEST['eng_word'])||!empty($_REQUEST['chi_word']))) {
             $sql = "select * from proword_map where";
@@ -24,12 +37,24 @@ class FanyiController extends Controller
             $sql = Util::cutTail($sql,'where');
             $allwords = $wordmap->findAllBySql($sql);
         }
+        // var_dump(count($allwords));
+        // exit;
 
         $this->render('index',array('entitys'=>$allwords));
     }
 
-    public function actionList()
+    public function actionLogin()
     {
+        $login = new Login;
+        if(!empty($_REQUEST['usr'])&&!empty($_REQUEST['pwd'])) {
+            $ret = $login->tologin($_REQUEST['usr'],$_REQUEST['pwd']);
+            if($ret) $this->redirect(urldecode($_REQUEST['url']));
+            else $loginlable = 'no';
+        }
+        $this->render('login', array(
+            'url'=>$_REQUEST['url'],
+            'lable'=> isset($loginlable) ? $loginlable : ""
+        ));
     }
 
     public function actionAdd()
@@ -43,6 +68,9 @@ class FanyiController extends Controller
         $this->layout = "fanyi";
         $wordmap = new WordMap;
         $words = array();
+        foreach($_REQUEST as $k=>$v) {
+            $_REQUEST[$k] = trim($v);
+        }
         if(!empty($_REQUEST['eng'])&&!empty($_REQUEST['subeng'])) {
             $sql = "select * from proword_map where";
             $sql .= " eng like '%{$_REQUEST['eng']}%'"; 

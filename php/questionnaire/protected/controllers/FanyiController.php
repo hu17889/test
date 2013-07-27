@@ -73,7 +73,7 @@ class FanyiController extends Controller
         }
         if(!empty($_REQUEST['eng'])&&!empty($_REQUEST['subeng'])) {
             $sql = "select * from proword_map where";
-            $sql .= " eng like '%{$_REQUEST['eng']}%'"; 
+            $sql .= " eng='{$_REQUEST['eng']}'"; 
             $words = $wordmap->findBySql($sql);
             if(empty($words)) $words['eng'] = $_REQUEST['eng'];
         } elseif(empty($_REQUEST['submodify'])&&!empty($_REQUEST['id'])) {

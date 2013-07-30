@@ -66,7 +66,6 @@ for(i=1;i<8;i+=2) {
         layer.add(circle);
     }
 }
-stage.add(layer);
 
 //points = [[width/8,height/8],[3*width/8,5*height/8],[7*width/8,5*height/8]];
 points = [];
@@ -77,6 +76,8 @@ points.push([p[0]*width/8,p[1]*height/8]);
 num = 0;
 p0 = points[0];
 p1 = points[1];
+ps = points[0];
+pe = points[1];
 xScale = p1[0]-p0[0];
 yScale = p1[1]-p0[1];
 // line
@@ -85,11 +86,14 @@ var anim = new Kinetic.Animation(function(frame) {
     fast = 1;
     xadd = xScale/(frame.frameRate*fast); 
     yadd = yScale/(frame.frameRate*fast);
-    if(p0[0]>=p1[0]) {
+    // 终止条件
+    if(((pe[0]-ps[0])*(p1[0]-p0[0])<=0)&&((pe[1]-ps[1])*(p1[1]-p0[1])<=0)) {
         num++;
         if(num+1>=points.length) return;
         p0 = points[num];
         p1 = points[num+1];
+        ps = points[num];
+        pe = points[num+1];
         xScale = p1[0]-p0[0];
         yScale = p1[1]-p0[1];
         return;
@@ -104,6 +108,7 @@ var anim = new Kinetic.Animation(function(frame) {
     layer.add(line);
 }, layer);
 anim.start();
+stage.add(layer);
 
 
 

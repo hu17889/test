@@ -167,7 +167,7 @@
     <input type="radio" name="q21" value="4"/>D. 有很多
     <input type="radio" name="q21" value="5"/>E. 一直有
     </p> </div>
-<h4><a name="q22">（22）悲痛的</a></h4>
+<h4><a name="q22">（22）沮丧的</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q22" value="1"/>A. 完全没有
     <input type="radio" name="q22" value="2"/>B. 有一点
@@ -175,7 +175,7 @@
     <input type="radio" name="q22" value="4"/>D. 有很多
     <input type="radio" name="q22" value="5"/>E. 一直有
     </p> </div>
-<h4><a name="q23">（23）无助的</a></h4>
+<h4><a name="q23">（23）否认灾难</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q23" value="1"/>A. 完全没有
     <input type="radio" name="q23" value="2"/>B. 有一点
@@ -191,7 +191,7 @@
     <input type="radio" name="q24" value="4"/>D. 有很多
     <input type="radio" name="q24" value="5"/>E. 一直有
     </p> </div>
-<h4><a name="q25">（25）不安全的</a></h4>
+<h4><a name="q25">（25）焦虑的</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q25" value="1"/>A. 完全没有
     <input type="radio" name="q25" value="2"/>B. 有一点
@@ -199,7 +199,7 @@
     <input type="radio" name="q25" value="4"/>D. 有很多
     <input type="radio" name="q25" value="5"/>E. 一直有
     </p> </div>
-<h4><a name="q26">（26）绝望的</a></h4>
+<h4><a name="q26">（26）难以承受的</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q26" value="1"/>A. 完全没有
     <input type="radio" name="q26" value="2"/>B. 有一点

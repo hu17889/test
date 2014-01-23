@@ -1,0 +1,2 @@
+Lysa WordPress theme is licensed under the GPL.
+http://www.gnu.org/copyleft/gpl.html

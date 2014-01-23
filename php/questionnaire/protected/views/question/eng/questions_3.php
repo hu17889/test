@@ -137,13 +137,13 @@
     <input type="radio" name="q21" value="3"/>moderately
     <input type="radio" name="q21" value="4"/>quite a bit    <input type="radio" name="q21" value="5"/>very much
     </p> </div>
-<h4><a name="q22">（22）Sad</a></h4>
+<h4><a name="q22">（22）Depressed</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q22" value="1"/>not at all    <input type="radio" name="q22" value="2"/>a little
     <input type="radio" name="q22" value="3"/>moderately
     <input type="radio" name="q22" value="4"/>quite a bit    <input type="radio" name="q22" value="5"/>very much
     </p> </div>
-<h4><a name="q23">（23）Helpless</a></h4>
+<h4><a name="q23">（23）Denial</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q23" value="1"/>not at all    <input type="radio" name="q23" value="2"/>a little
     <input type="radio" name="q23" value="3"/>moderately
@@ -155,13 +155,13 @@
     <input type="radio" name="q24" value="3"/>moderately
     <input type="radio" name="q24" value="4"/>quite a bit    <input type="radio" name="q24" value="5"/>very much
     </p> </div>
-<h4><a name="q25">（25）Unsafe</a></h4>
+<h4><a name="q25">（25）Anxious</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q25" value="1"/>not at all    <input type="radio" name="q25" value="2"/>a little
     <input type="radio" name="q25" value="3"/>moderately
     <input type="radio" name="q25" value="4"/>quite a bit    <input type="radio" name="q25" value="5"/>very much
     </p> </div>
-<h4><a name="q26">（26）Hopeless</a></h4>
+<h4><a name="q26">（26）Overwhelmed</a></h4>
     <div class="answer"> <p>
     <input type="radio" name="q26" value="1"/>not at all    <input type="radio" name="q26" value="2"/>a little
     <input type="radio" name="q26" value="3"/>moderately

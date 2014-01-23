@@ -24,20 +24,20 @@
     <input type="radio" name="q3" value="5"/>very intense feelings to disaster
     </p> </div>
 
-    <h4><a name="q4">4.	您完成这一任务的吃力程度是？</a></h4>
+    <h4><a name="q4">4.	When you were working on these decisions, how much effort put in it?</a></h4>
     <div class="answer"> <p>
-    <input type="radio" name="q4" value="1"/>A.非常轻松
-    <input type="radio" name="q4" value="2"/>B.要思考一下
-    <input type="radio" name="q4" value="3"/>C.需要一些努力
-    <input type="radio" name="q4" value="4"/>D.需要挺努力
-    <input type="radio" name="q4" value="5"/>E.需要非常努力
+    <input type="radio" name="q4" value="1"/>A.It's easy,takes no effort
+    <input type="radio" name="q4" value="2"/>B.It takes a little effort
+    <input type="radio" name="q4" value="3"/>C.It takes some effort
+    <input type="radio" name="q4" value="4"/>D.It takes much effort
+    <input type="radio" name="q4" value="5"/>E.It takes exteme effort
     </p> </div>
 
-    <h4><a name="q5">5. 您认为这一任务的难度是？</a></h4>
+    <h4><a name="q5">5. How difficult of this decision task do you rank?</a></h4>
     <div class="answer"> <p>
-    <input type="radio" name="q5" value="1"/>A.非常容易
-    <input type="radio" name="q5" value="2"/>B.有点难度
-    <input type="radio" name="q5" value="3"/>C.中等难度
-    <input type="radio" name="q5" value="4"/>D.比较有难度
-    <input type="radio" name="q5" value="5"/>E.非常有难度
+    <input type="radio" name="q5" value="1"/>A.easy
+    <input type="radio" name="q5" value="2"/>B.a little dificult
+	<input type="radio" name="q5" value="3"/>C.moderately difficult
+    <input type="radio" name="q5" value="4"/>D.very difficult
+    <input type="radio" name="q5" value="5"/>E.extremely difficult
     </p> </div>

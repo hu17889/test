@@ -1,0 +1,359 @@
+/*
+Theme Name: Lysa
+Theme URI: 
+Description: 
+Author: Dannci
+Author URI: http://beatheme.com/
+version: 1.+
+Tags: 
+*/
+
+
+
+/* basics */
+
+body {
+
+	}
+
+#container {
+
+	}
+	
+#box {
+
+	}
+	
+a{
+
+	}
+
+a:hover{
+
+	}
+
+
+	
+
+	
+
+/* menu page */
+
+#head {
+
+	}
+	
+#nav li a, #nav li a:visited {
+
+	}
+
+#nav li a:hover {
+
+	}
+
+#nav li li a, #nav li li a:visited {
+
+	}
+	
+#nav li li a:hover, #nav li li a:active {
+
+	}
+	
+#nav .current_page_item a, #nav .current_page_item a:visited {
+
+	}
+
+
+
+/* header */	
+#header h1 a{}
+#header h1 a:hover{}
+
+#header h2{
+
+	}
+	
+/* Category Navigation */
+
+#cat_navi li a span {
+
+	}
+	
+#secnav a {
+
+	}
+
+#secnav a:hover {
+
+}
+	
+#secnav li:hover, #secnav li.sfhover1 {
+
+}
+
+#secnav li:hover span, #secnav li.sfhover1 span {
+
+}
+
+#secnav li ul {
+
+}
+
+#secnav li ul li a {
+
+}
+
+#secnav li ul li a {
+
+}
+
+#secnav li ul li a:hover {
+
+}
+
+
+/* content */
+
+
+
+#content .post {
+
+	}
+	
+#content .post h2 a {
+
+	}
+#content .post h2 a:hover {
+
+	}
+#content .post .commentos{
+
+	}
+		
+#content .post .commentos a:hover{
+
+	}
+#content .post img {
+
+	}
+	
+#content .post .category {
+
+	}
+		
+#content .post .category a{
+
+	}
+	
+
+
+.inf{}
+
+#content .single img{}
+
+.postmetadata{
+
+	}
+	
+#archives a{}
+
+.archivefeed a {
+
+}
+.arclist{
+
+}
+
+
+.arclist ul li{
+
+}
+
+/* topside sidebar */
+
+
+
+
+#topside .fblock img{
+
+	}
+	
+.fblock{
+
+	}
+
+.fblock h2 a{
+
+	}
+	
+.fblock h2 a:hover{
+
+	}
+
+.fblock .commentos{
+
+	}
+		
+#content .post .commentos a:hover{
+
+	}
+
+.fblock .category {
+
+	}
+	
+.fblock .category a{
+
+	}
+	
+	
+/*  about */
+
+#about p.text{
+
+}
+
+#about img.avatar{
+
+}
+
+/*  sidebar */
+
+
+
+#right h2, #left h2{
+
+}
+
+#right label, #left label{
+
+}
+
+#right a:hover, #left a:hover {}
+
+#right ul ul ul li, #left ul ul ul li{
+
+}
+
+#right ul li:hover, #left ul li:hover {
+
+	}
+
+/* comments */
+
+.commentlist li {
+
+}
+
+.commentlist .bypostauthor {
+
+}
+
+.commentlist .avatar {
+
+}
+
+.trackback, .pingback {
+
+}
+
+ol.commentlist li div.vcard cite.fn a.url {}
+ol.commentlist li div.vcard cite.fn a.url:hover {}
+ol.commentlist li div.comment-meta a {}
+ol.commentlist li div.comment-meta a:hover {}
+ol.commentlist li div.reply {}
+ol.commentlist li div.reply:hover {}
+ol.commentlist li div.reply a {}
+ol.commentlist li.even {}
+ol.commentlist li.odd {}
+
+ol.commentlist li.authcomment {
+
+}
+
+#author, #email, #url, #comment, #submit{
+
+	}
+	
+#submit{
+
+	}
+
+.required {
+
+	}
+
+cite a{}
+
+
+/* search */
+
+#searchform input#s{
+
+	}
+	
+/* footer */
+
+#footer {
+
+	}
+	
+#footer h2 {
+
+	}
+#footer p {
+
+	}
+#footer a {
+
+	}
+#footer a:hover {
+
+	}
+	
+#foodown{}
+
+
+/* pagination */
+
+
+	
+.wp-pagenavi a, .wp-pagenavi a:link {
+
+}
+.wp-pagenavi a:visited {
+	
+}
+.wp-pagenavi a:hover {	
+
+}
+.wp-pagenavi a:active {
+
+}
+.wp-pagenavi span.pages {
+
+}
+.wp-pagenavi span.current {
+
+}
+.wp-pagenavi span.extend {
+
+}
+
+
+/* tables */
+table td,table th{}
+table th{}
+table td{}
+table th a{}
+table th a:hover{}
+table tr.even td{}
+table tr:hover td{}
+
+
+
+
+/* MISC */
+
+.wp-caption {
+}

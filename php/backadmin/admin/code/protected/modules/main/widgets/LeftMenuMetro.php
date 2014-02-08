@@ -11,6 +11,7 @@ class LeftMenuMetro extends CWidget
         preg_match("/(^.*?)\?|(^.*)/",$_SERVER['REQUEST_URI'],$matchs);
         $currentRoute  = empty($matchs[1]) ? $matchs[2] : $matchs[1];
         $actions = Privilege::getMenu($this->userid);
+        $first = $second = array();
         foreach($actions as $v) {
             if($v['is_menu']==1) {
                 $first[$v['aid']] = $v;

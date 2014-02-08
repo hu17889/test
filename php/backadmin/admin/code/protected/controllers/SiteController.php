@@ -2,7 +2,7 @@
 
 class SiteController extends Controller
 {
-    public $layout = '';//"application.modules.main.views.layouts.frame_without_leftnav";
+    public $layout = 'application.modules.main.views.layouts.metronic';//"application.modules.main.views.layouts.frame_without_leftnav";
 
     /**
      * This is the default 'index' action that is invoked
@@ -10,6 +10,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->render("/site/index");exit;
+        /*
         $userInfo = Login::getLoginInfo();
         $roleInfo = Role::model()->find('rid=:id',array(':id'=>$userInfo['rid']));
         $params = Yii::app()->getParams();
@@ -26,6 +28,7 @@ class SiteController extends Controller
         {
             $this->redirect('/student/courselist');
         }
+        */
     }
 
     /**

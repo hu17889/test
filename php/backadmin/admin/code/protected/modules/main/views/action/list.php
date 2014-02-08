@@ -26,7 +26,7 @@
                     <li><a href="#">Export to Excel</a></li>
                 </ul>
             </div>
-        </div>
+        </div>  
         <table class="table table-striped table-responsive table-hover" id="datatable">
             <thead>
                 <tr>
@@ -70,7 +70,7 @@
     '<"class" and '>' - div with a class
     '<"#id" and '>' - div with an ID
     */
-    $('#datatable').dataTable({
+    var oTable = $('#datatable').dataTable({
         "sDom" : "<'row'<'col-md-6 col-sm-12'l><'col-md-12 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", //default layout without horizontal scroll(remove this setting to enable horizontal scroll for the table)
         "aLengthMenu": [
             [10, 25, 50, 100, -1], // value for ajax
@@ -105,6 +105,28 @@
           null,
           { "bSearchable": true}
         ] 
+    });
+
+    $('#datatable').delegate('a.delete','click', function (e) {
+        e.preventDefault();
+
+        if (confirm("Are you sure to delete this row ?") == false) {
+            return;
+        }
+
+        var id = $(this).data("id");
+        $.post(
+            "/main/action/del", 
+            {"id": id},
+            function(data) {
+                console.log(data);
+            }, 
+            "post"
+        ); 
+        
+        var nRow = $(this).parents('tr')[0];
+        console.log(nRow);
+        oTable.fnDeleteRow(nRow);
     });
 
 

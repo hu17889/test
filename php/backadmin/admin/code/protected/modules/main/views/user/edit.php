@@ -1,70 +1,83 @@
-<div class="Add_Class_content">
-  <div class="top">
-    <img src="/images/frame/cont_home.png" align="absmiddle" class="home" />
-    <span>用户管理</span>
-    <div class="right_top_sous">
-      <form class='jqtr' method='post' action='/main/user/list'>
-        <ul>
-          <li class="li">
-            <span class="k">
-              <input name="name" type="text" size="21"/>
-                <input type="submit" style="font-size:14px;" value="&nbsp;查&nbsp;询&nbsp;"/>
-            </span>
-          </li>
-        </ul>
+<!-- BEGIN SAMPLE FORM PORTLET-->   
 
-      </form>
-
+<div class="row">
+<div class="col-md-6">
+<?php if($label=='has_usr') { ?>
+<div class="alert alert-warning">
+  <strong>Error!</strong>已经有此路由信息
+</div>
+<?php } ?>
+<div class="portlet box green ">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-reorder"></i> Route Edit
+    </div>
+    <div class="tools">
+      <a href="" class="collapse"></a>
+      <a href="#portlet-config" data-toggle="modal" class="config"></a>
+      <a href="" class="reload"></a>
+      <a href="" class="remove"></a>
     </div>
   </div>
-
-  <div class="cont" style="height:600px">
-    <div class="tittle_c">编辑用户</div>
-    <?php if($label=='has_usr') { ?>
-    <div class='tip'>已经有此用户</div>
-    <?php } ?>
-    <div class="form">
-      <form  class='jqtr' method='post' action='/main/user/edit'>
-        <input type='hidden' name='id' value='<?php echo !empty($entity['uid']) ? $entity['uid']:''; ?> ' /> <br>
-        <ul>
-          <li class="li">
-            <span class="k" style="height:42px">
-              <span>用户名：</span><input name="name" type="text" class="input" value="<?php echo !empty($entity['uname']) ? htmlspecialchars($entity['uname']):'';?>" size="31"/></span>
-          </li>
-          <li class="li">
-            <span class="k" style="height:42px">
-              <span>密码：</span><input name="pwd" type="text" class="input" value="" size="31"/></span>
-          </li>
-          <li class="li">
-            <span class="k" style="height:42px">
-              <span>邮箱：</span><input name="email" type="text" class="input" value="<?php echo !empty($entity['email']) ? htmlspecialchars($entity['email']):'';?>" size="31"/></span>
-          </li>
-          <li class="o_none">
-            <span class="k"  style="height:42px">
-              <select id='role_select' name="rid" style="width:160px;">
-                <?php foreach($roles as $role) {?>
-                <option value ="<?php echo $role['rid'];?> "> <?php echo htmlspecialchars($role['rname']);?></option>
-                <?php }?>
-              </select>
-            </span>
-          </li>
-
-        </ul>
-        <div class="submit_a">
-          <input type="submit" name='modify' value='&nbsp;&nbsp;确&nbsp;&nbsp;定&nbsp;&nbsp;' />
+  <div class="portlet-body form">
+    <form class="form-horizontal" role="form" method='post' action='/main/user/edit'>
+      <div class="form-body">
+        <div class="form-group">
+          <label  class="col-md-3 control-label">用户Id</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control"  name='id' value='<?php echo !empty($entity['uid']) ? $entity['uid']:''; ?>' placeholder="<?php echo !empty($entity['uid']) ? $entity['uid']:''; ?>" readonly>
+          </div>
         </div>
-      </form>
-
-    </div>
-    <!--form--> </div>
-  <!--cont-->
-  <div class="newz_k_foot"></div>
+        <div class="form-group">
+          <label  class="col-md-3 control-label">用户名</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control"  name='name' value='<?php echo !empty($entity['uname']) ? $entity['uname']:''; ?>' placeholder="<?php echo !empty($entity['uname']) ? $entity['uname']:''; ?>" >
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-md-3 control-label">密码</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control"  name='pwd' value='' placeholder="" >
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-md-3 control-label">邮箱</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control"  name='email' value='<?php echo !empty($entity['email']) ? $entity['email']:''; ?>' placeholder="<?php echo !empty($entity['email']) ? $entity['email']:''; ?>" >
+          </div>
+        </div>
+        <div id='rolemenu' class="form-group" >
+          <label  class="col-md-3 control-label">用户角色</label>
+          <div class="col-md-9">
+            <select name='rid' class="form-control">
+              <option value="">请选择</option>
+              <?php foreach ($roles as $v) {?>
+              <option value="<?php echo htmlspecialchars($v['rid'])?>"><?php echo htmlspecialchars($v['rname'])?></option>
+              <?php }?>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-actions fluid">
+        <div class="col-md-offset-3 col-md-9">
+          <input type="submit" name='modify' value='Submit' class="btn green">
+          <button id="cancel" type="button" class="btn default">Cancel</button>                              
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
-<!--Add_Class_content-->
+</div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
+
 
 <script type='text/javascript'>
 (function($){
-    roleid = '<?php echo !empty($entity['rid']) ? $entity['rid']:''; ?>';
-    $("#role_select option[value='"+roleid+"']").attr('selected','selected');
+    $('#rolemenu select').val('<?php echo isset($entity["rid"]) ?  htmlspecialchars($entity["rid"]) : "";?>');
+
+    $('#cancel').on("click",function(){
+        location.href="/main/user/list";
+    });
 })(jQuery)
 </script>

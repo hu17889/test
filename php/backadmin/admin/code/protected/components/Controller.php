@@ -39,31 +39,36 @@ class Controller extends CController
         
         //var_dump($this->actionName);exit;
 
+
+
         // 登陆限制
         if($_SERVER['REQUEST_URI']=='/main/user/logout' 
             || preg_match('|^/main/user/login|',$_SERVER['REQUEST_URI']) 
             || preg_match('|^/main/user/register|',$_SERVER['REQUEST_URI'])
-            || $requestUrl=='/site/index'
             || $requestUrl=='/site/error'
             //|| $requestUrl=='/main/user/initsystem'
             ) 
         {
             return true;
         }
-       
+
+         // get user info
         $userInfo = Login::getLoginInfo();
         //var_dump($userInfo);exit;
         $url = urlencode($_SERVER['REQUEST_URI']);
         //var_dump($url);exit;
         if(empty($userInfo)) $this->redirect('/main/user/login?url='.$url);
         $this->userid = $userInfo['uid'];
-		$this->userInfo = $userInfo;
+        $this->userInfo = $userInfo;      
+
         // 权限限制
-        if(!Privilege::hasPrivilege($userInfo['uid'],$requestUrl)) 
+        if(!Privilege::hasPrivilege($userInfo['uid'],$requestUrl)
+            && $requestUrl!='/site/index'
+            ) 
         {
         	//echo "22222";
             //return false;
-            return true;
+            return false;
         }
 
         return true;

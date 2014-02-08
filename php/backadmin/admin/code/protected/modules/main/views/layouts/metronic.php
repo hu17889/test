@@ -46,8 +46,27 @@
   <div class="header-inner">
     <!-- BEGIN LOGO -->  
     <a class="navbar-brand" href="index.html">
-    <img src="/assets/img/logo.png" alt="logo" class="img-responsive" />
+    <img src="/images/backadminlogo.png" alt="logo" class="img-responsive" />
     </a>
+
+      <!-- BEGIN TOP NAVIGATION MENU -->
+      <ul class="nav navbar-nav pull-right">
+        <!-- BEGIN USER LOGIN DROPDOWN -->
+        <li class="dropdown user">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+          <img alt="" src="assets/img/avatar1_small.jpg"/>
+          <span class="username"><?php echo htmlspecialchars($this->userInfo["uname"]);?></span>
+          <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> Full Screen</a></li>
+            <li><a href="extra_lock.html"><i class="fa fa-lock"></i> Lock Screen</a></li>
+            <li><a href="/main/user/logout"><i class="fa fa-key"></i> Log Out</a></li>
+          </ul>
+        </li>
+        <!-- END USER LOGIN DROPDOWN -->
+      </ul>
+      <!-- END TOP NAVIGATION MENU -->
   </div>
 </div> <!--header-->
 
@@ -116,9 +135,7 @@
   <!-- END CORE PLUGINS -->
 
   <!-- BEGIN PAGE LEVEL PLUGINS -->
-  <script type="text/javascript" src="/assets/plugins/data-tables/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="/assets/plugins/data-tables/DT_bootstrap.js"></script><!-- data table -->
-  <script type="text/javascript" src="/assets/plugins/select2/select2.min.js"></script>
+
 
   <!-- END PAGE LEVEL PLUGINS -->
 

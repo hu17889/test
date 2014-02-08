@@ -47,7 +47,8 @@ class ActionController extends Controller
                 2=>$v['route'],
                 3=>$v['is_menu'],
                 4=>$t['aname'],
-                5=>'<a class="edit" href="/main/action/edit?id={$v["aid"]}">Edit</a>',
+                5=>'<a class="btn btn-sm red" href="/main/action/edit?id='.$v["aid"].'"><i class="fa fa-edit"></i></a> '.
+                '<a class="delete btn btn-sm red" data-id="'.$v["aid"].'"><i class="fa fa-times"></i></a>',
             );
             $entitys[] = $data;
         }
@@ -62,9 +63,22 @@ class ActionController extends Controller
 
     }
 
+    public function actionDel()
+    {
+        $id = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : '';
+        if($id!='') {
+            $ret = Action::model()->deleteByPk($id);
+            RoleAction::model()->deleteAll('aid=:aid',array(':aid'=>$id));
+            var_dump($ret);
+        } else {
+            echo "fail";
+        }
+    }
+
 
     public function actionEdit()
     {
+        //echo "<pre>";var_dump($_REQUEST);exit;
         $action = new Action;
         $actionInfo = array();
         $label = '';
@@ -89,11 +103,11 @@ class ActionController extends Controller
             }
         } elseif(!empty($_REQUEST['name'])) {
             // 新增
-            $actionInfo = $action->find('aname=:name',array(':name'=>$_REQUEST['name']));
+            $actionInfo = $action->find('aname=:name or route=:route',array(':name'=>$_REQUEST['name'],':route'=>$_REQUEST['route']));
             if(!empty($actionInfo)) {
                 $this->render('edit',array(
                     'firstmenus'=>$firstmenus,
-                    'entity'=>$actionInfo[0],
+                    'entity'=>$actionInfo,
                     'label'=>'has_action',
                 ));
                 exit;
@@ -106,6 +120,7 @@ class ActionController extends Controller
                 $action->save();
                 $this->redirect('/main/action/list');
             }
+            //echo "<pre>";var_dump($_REQUEST,$actionInfo);exit;
         }
 
         $this->render('edit',array(

@@ -1,31 +1,66 @@
-<div class='Add_Class_content'>
+
+<div class="row">
+<div class="col-md-6">
 <?php if($label=='has_role') { ?>
-<div class='tip'>已经有此角色</div>
-<?php } ?>
-<form method='post' action='/main/role/edit'>
-角色id:<?php echo !empty($entity['rid']) ? $entity['rid']:''; ?>
-<input type='hidden' name='id' value='<?php echo !empty($entity['rid']) ? $entity['rid']:''; ?>' /><br>
-角色名:<input type='text' name='name' value='<?php echo !empty($entity['rname']) ? htmlspecialchars($entity['rname']):''; ?>'/><br>
-<p>权限列表：</p>
-<?php foreach($action_list as $key=>$action) { ?>
-    <?php $check = !empty($entity['actions'])&&isset($entity['actions'][$action['aid']]) ? 'checked' : '';?>
-    <input type='checkbox' name='actions[<?php echo $key;?>]' value='<?php echo $action['aid']; ?>' <?php echo $check;?> /><?php echo $action['aname']; ?> <?php echo $action['route']; ?>
-    <?php if($action['is_menu']) {?>
-        <?php if(isset($entity['actions'][$action['aid']])) {?>
-        <div id="position_<?php echo $action['aid']; ?>">
-        --菜单位置：<input type='text' name='positions[<?php echo $action['aid'];?>]' value='<?php echo $entity['actions'][$action['aid']]; ?>'  />
-        </div>
-        <?php } else {?>
-        <div id="position_<?php echo $action['aid']; ?>" style="display:none;">
-        --菜单位置：<input type='text' name='positions[<?php echo $action['aid'];?>]' value='0'  />
-        </div>
-        <?php } ?>
-    <?php } ?>
-    <br>
-<?php } ?>
-<input type='submit' name='modify' value="提交">
-</form>
+<div class="alert alert-warning">
+    <strong>Error!</strong>已经有此路由信息
 </div>
+<?php } ?>
+<div class="portlet box green ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-reorder"></i> Route Edit
+        </div>
+        <div class="tools">
+            <a href="" class="collapse"></a>
+            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+            <a href="" class="reload"></a>
+            <a href="" class="remove"></a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form class="form-horizontal" role="form" method='post' action='/main/role/edit'>
+            <div class="form-body">
+                <div class="form-group">
+                    <label  class="col-md-3 control-label">角色Id</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control"  name='id' value='<?php echo !empty($entity['rid']) ? $entity['rid']:''; ?>' readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-md-3 control-label">角色名</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control"  placeholder="Enter text" name='name' value='<?php echo !empty($entity['rname']) ? htmlspecialchars($entity['rname']):''; ?> '>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Checkboxes</label>
+                    <div class="col-md-9">
+                        <div class="checkbox-list">
+                            <?php foreach($action_list as $key=>$action) { ?>
+                            <?php $check = !empty($entity['actions'])&&isset($entity['actions'][$action['aid']]) ? 'checked' : '';?>
+                            <label>
+                            <input type='checkbox' name='actions[<?php echo $key;?>]' value='<?php echo $action['aid']; ?>' <?php echo $check;?> /><?php echo $action['aname']; ?> <?php echo $action['route']; ?>
+                            </label>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions fluid">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" name='modify' value='Submit' class="btn green">
+                    <button id="cancel" type="button" class="btn default">Cancel</button>                              
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
+
+
 
 <script type='text/javascript'>
 (function($) {
@@ -36,6 +71,10 @@
         } else {
             $(name).css('display','none');
         }
+    });
+
+    $('#cancel').on("click",function(){
+        location.href="/main/role/list";
     });
 })(jQuery)
 </script>

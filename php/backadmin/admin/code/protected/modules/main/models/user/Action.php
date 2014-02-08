@@ -12,10 +12,5 @@ class Action extends CActiveRecord
         return '`m-action`';
     }
 
-    public function colNameMap()
-    {
-    	return array(
-    	);
-    }
 
 }

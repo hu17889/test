@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="/assets/plugins/data-tables/DT_bootstrap.css" />
 <script type="text/javascript" src="/assets/plugins/data-tables/jquery.dataTables.js"></script>
 <script type="text/javascript" src="/assets/plugins/data-tables/DT_bootstrap.js"></script><!-- data table -->
-<script src="assets/scripts/table-ajax.js"></script> 
+<script src="/assets/scripts/table-ajax.js"></script> 
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>

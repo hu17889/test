@@ -1,6 +1,6 @@
 <?php
 
-class Role extends CActiveRecord
+class Role extends MActiveRecord
 {
     public static function model($className=__CLASS__)
     {

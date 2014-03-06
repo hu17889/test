@@ -64,10 +64,9 @@ class Controller extends CController
         // 权限限制
         if(!Privilege::hasPrivilege($userInfo['uid'],$requestUrl)
             && $requestUrl!='/site/index'
-            ) 
+            && $requestUrl!='/main/user/lock'
+            )
         {
-        	//echo "22222";
-            //return false;
             return false;
         }
 

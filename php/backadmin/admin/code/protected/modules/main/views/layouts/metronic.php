@@ -54,14 +54,14 @@
         <!-- BEGIN USER LOGIN DROPDOWN -->
         <li class="dropdown user">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-          <img alt="" src="assets/img/avatar1_small.jpg"/>
+          <img alt="" src="/assets/img/avatar1_small.jpg"/>
           <span class="username"><?php echo htmlspecialchars($this->userInfo["uname"]);?></span>
           <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> Full Screen</a></li>
-            <li><a href="extra_lock.html"><i class="fa fa-lock"></i> Lock Screen</a></li>
-            <li><a href="/main/user/logout"><i class="fa fa-key"></i> Log Out</a></li>
+            <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i>全屏</a></li>
+            <!--<li><a href="/main/user/lock"><i class="fa fa-lock"></i>锁屏</a></li>-->
+            <li><a href="/main/user/logout"><i class="fa fa-key"></i>退出</a></li>
           </ul>
         </li>
         <!-- END USER LOGIN DROPDOWN -->
@@ -105,7 +105,7 @@
 <!-- BEGIN FOOTER -->
 <div class="footer">
     <div class="footer-inner">
-        2013 &copy; Metronic by keenthemes.
+        2014 &copy; Back Admin by hucong.
     </div>
     <div class="footer-tools">
         <span class="go-top">

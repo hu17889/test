@@ -1,6 +1,6 @@
 <?php
 
-class RoleAction extends CActiveRecord
+class RoleAction extends MActiveRecord
 {
     public static function model($className=__CLASS__)
     {
@@ -39,7 +39,7 @@ class RoleAction extends CActiveRecord
      */
     public function saveActions($rid,array $actions)
     {
-        $conn = Yii::app()->db;
+        $conn = Yii::app()->db_frame;
         $sql = "insert into `m-role-action` (rid,aid,menu_pos) values ";
         foreach($actions as $k=>$v) {
             $sql .= "({$rid},{$k},{$v}),";

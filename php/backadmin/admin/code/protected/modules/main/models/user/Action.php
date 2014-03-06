@@ -1,6 +1,6 @@
 <?php
 
-class Action extends CActiveRecord
+class Action extends MActiveRecord
 {
     public static function model($className=__CLASS__)
     {

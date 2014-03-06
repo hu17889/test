@@ -215,13 +215,20 @@ class UserController extends Controller
         $this->jsonResult(0);
     }
 
+    // 锁屏
+    public function actionLock()
+    {
+        $this->render("lock",array('url'=>$url));
+    }
 
+    // 退出
     public function actionLogout()
     {
         Login::logout();
         $this->redirect('/main/user/login');
     }
 
+    // 删除用户
     public function actionDel()
     {
         User::model()->delUser($_REQUEST['id']);

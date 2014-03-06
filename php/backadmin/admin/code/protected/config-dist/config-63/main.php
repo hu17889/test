@@ -31,8 +31,8 @@ return array(
             'ipFilters'=>array('127.0.0.1','::1'),
         ),
          */
-		'main',
-        ),
+        'main',
+    ),
 
         // application components
         'components'=>array(
@@ -54,7 +54,8 @@ return array(
                 // 'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
             // ),
             // uncomment the following to use a MySQL database
-            'db'=>array(
+            'db_frame'=>array(
+                'class'=>'CDbConnection',
                 'connectionString' => 'mysql:host=10.16.15.79:3306;dbname=backadmin',
                 'emulatePrepare' => true,
                 'username' => 'open',

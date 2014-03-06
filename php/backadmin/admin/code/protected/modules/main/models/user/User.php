@@ -1,6 +1,6 @@
 <?php
 
-class User extends CActiveRecord
+class User extends MActiveRecord
 {
     public static function model($className=__CLASS__)
     {
@@ -37,7 +37,7 @@ class User extends CActiveRecord
                 LEFT JOIN `m-role` r ON u.rid=r.rid order by u.uname
             ";
         }
-        $conn = Yii::app()->db;
+        $conn = Yii::app()->db_frame;
         $command = $conn->createCommand($sql);
         foreach($params as $key=>$value) {
             $command->bindParam($key,$value);
@@ -73,7 +73,7 @@ class User extends CActiveRecord
                 INNER JOIN `m-action` a ON ra.aid=a.aid
             ";
         }
-        $conn = Yii::app()->db;
+        $conn = Yii::app()->db_frame;
         $command = $conn->createCommand($sql);
         foreach($params as $key=>$value) {
             $command->bindParam($key,$value);

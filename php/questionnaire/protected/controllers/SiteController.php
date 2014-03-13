@@ -30,6 +30,16 @@ class SiteController extends Controller
         $this->layout = "main";
         $this->render("index");
 	}
+	public function actionTest()
+	{
+		var_dump($_REQUEST);
+	}
+
+
+	public function actionWork()
+	{
+		$this->render("work");
+	}
 
 	/**
 	 * This is the action to handle external exceptions.

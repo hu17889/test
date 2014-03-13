@@ -177,9 +177,9 @@ require(["jquery","info_panel"],function($,INFO_PANEL) {
     });
 
     // 信息版倒计时 
-    $(".timer .time_show").text(150); 
+    $(".timer .time_show").text(100); 
     function timer() { 
-        var nowTime = 150; 
+        var nowTime = 100; 
         var timer = setInterval(showTime,1000); 
         function showTime() { 
             if(nowTime<=0) { 

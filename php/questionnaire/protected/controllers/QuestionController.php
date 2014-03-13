@@ -7,6 +7,7 @@ class QuestionController extends Controller
     {
         $this->layout = "main_chi";
         $qid = empty($_REQUEST['qid']) ? "" : $_REQUEST['qid'];
+        $_REQUEST['lang'] = empty($_REQUEST['lang']) ? "chi" : $_REQUEST['lang'];
         $qmodel = new Question;
         $points = array();
         if(!empty($qid)) {
@@ -15,7 +16,7 @@ class QuestionController extends Controller
         // echo "<pre>";
         // var_dump($qid, $points);
         // exit;
-        $this->render("draw", array('points'=>$points));
+        $this->qrender("draw1", array('points'=>$points,'lang'=>$_REQUEST['lang']));
     }
 
     public function qrender($file,$params=array())

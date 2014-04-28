@@ -41,3 +41,13 @@
     <input type="radio" name="q5" value="4"/>D.比较有难度
     <input type="radio" name="q5" value="5"/>E.非常有难度
     </p> </div>
+
+	<?php if($expid==3||$expid==6) {?>
+    <h4><a name="q6">6. 在您做决策时，您是如何处理“备用电源”因素中“一段时间”“较长时间”这样的信息的？</a></h4>
+    <div class="answer"> <p>
+    <input type="radio" name="t6" value="1"/>A.等待得到了确切信息
+    <input type="radio" name="t6" value="2"/>B.自己估计了一下确切数值
+    <input type="radio" name="t6" value="3"/>C.自己大概估计了一下，但没用确切数值
+    <input type="radio" name="t6" value="4"/>D.直接忽略这样的信息
+    </p> </div>
+	<?php }?>

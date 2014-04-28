@@ -16,7 +16,7 @@ class QuestionController extends Controller
         // echo "<pre>";
         // var_dump($qid, $points);
         // exit;
-        $this->qrender("draw1", array('points'=>$points,'lang'=>$_REQUEST['lang']));
+        $this->qrender("draw1", array('points'=>$points,'lang'=>$_REQUEST['lang'],'qid'=>$qid));
     }
 
     public function qrender($file,$params=array())

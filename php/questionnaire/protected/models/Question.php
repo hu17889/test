@@ -172,7 +172,7 @@ class Question
     public function getPointsByNaireId($qid)
     {
         $db = Yii::app()->db;
-        $sql = "select * from points_tmp where qid=:qid order by start_time asc";
+        $sql = "select * from points_copy where qid=:qid order by start_time asc";
         $conn = $db->createCommand($sql);
         $conn->bindParam(":qid",$qid);
         $conn->execute();

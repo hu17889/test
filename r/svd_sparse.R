@@ -53,12 +53,14 @@ repeat
     dm[,j] = rowSums(t) - km * M[,j] 
   }
 
+
   # 迭代修正
   U = U + u * du
   M = M + u * dm
   # 判断迭代结束
   LAST_RMSE = RMSE
-  RMSE = sqrt(sum((inputdata - t(U)%*%M)^2)/(nr*nc))
+  index = which(!is.na(inputdata))
+  RMSE = sqrt(sum((inputdata[index] - (t(U)%*%M)[index])^2)/(nr*nc))
   if(is.infinite(RMSE)) break
   if(abs(RMSE)<0.01) break
   if(RMSE>LAST_RMSE) break

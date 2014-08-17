@@ -3,7 +3,7 @@
 Plugin Name: LaTeX for WordPress
 Plugin URI: http://wordpress.org/extend/plugins/latex/
 Description: Using MathJax and LaTex image service, this plugin provides a general solution to add and display your mathematical fourmula, no matter the visitors are visiting your blog or read from Google Reader. 
-Version: 3.4.6
+Version: 3.4.10
 Author: zhiqiang
 Author URI: http://zhiqiang.org
 */
@@ -15,7 +15,7 @@ function latex_for_wp_activate() {
                 update_option("latex_img_server", "http://chart.apis.google.com/chart?cht=tx&chl=");
         if (get_option("mathjax_server") == FALSE )     
                 update_option("mathjax_server", "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML");
-        if (get_option("latex_cache_path") == FALSE )   
+        if (get_option("latex_cache_path") == FALSE ) {  
                 update_option("latex_cache_path", ABSPATH."wp-content/plugins/latex/cache/");
                 update_option("latex_turnoff", true);
                 update_option("latex_mathjax_config", '<script type="text/x-mathjax-config"> \n'.
@@ -25,6 +25,10 @@ function latex_for_wp_activate() {
 '                SVG: {linebreaks: {automatic: true}}\n' .
 '        }); \n' .
 '</script>') ;
+        }
+        if (get_option("latex_ifspacewrapped") == false){
+            update_option("latex_ifspacewrapped", false);
+        }
 }
 
 register_activation_hook( __FILE__, 'latex_for_wp_activate' );
@@ -32,7 +36,7 @@ register_activation_hook( __FILE__, 'latex_for_wp_activate' );
 add_action('admin_menu', 'latex_admin_page');
 function latex_admin_page() {
         if (function_exists('add_submenu_page')) {
-                add_submenu_page('options-general.php',  'LaTex administrator',  'LaTex', 1, 'latex/latex-admin.php');
+                add_submenu_page('options-general.php',  'LaTex administrator',  'LaTeX', 'manage_options', 'latex/latex-admin.php');
         }
 }
 
@@ -40,8 +44,20 @@ $iflatexexists = false;
 
 function decode_entities_latex($text) {
     $text= html_entity_decode($text,ENT_QUOTES,"ISO-8859-1"); #NOTE: UTF-8 does not work!
-    $text= preg_replace('/&#(\d+);/me',"chr(\\1)",$text); #decimal notation
-    $text= preg_replace('/&#x([a-f0-9]+);/mei',"chr(0x\\1)",$text);  #hex notation
+    $text= preg_replace('/&#(\d+);/me',"chr(\\1)",$text); #decimal notation
+    $text= preg_replace('/&#x([a-f0-9]+);/mei',"chr(0x\\1)",$text);  #hex notation
+    // $text = preg_replace_callback(
+    //        '/&#(\d+);/m',
+    //        function($m) {
+    //            return chr(intval($m[1]));
+    //        },
+     //       $text); # decimal notation
+     //   $text = preg_replace_callback(
+      //      '/&#x([a-f0-9]+);/mi',
+       //     function($m) {
+        //        return chr(intval("0x$m[1]"));
+         //   },
+          //  $text); #hex notation
     return $text;
 }
 
@@ -126,7 +142,7 @@ else
                 // returning the image-tag, referring to the image in your cache folder 
                 if($imgtext) return "<p style='text-align:center;'><span class='MathJax_Preview'>".(get_option('latex_img_server')==""?"\[".($formula_text)."\]":"<img src='$cache_formula_url' style='".get_option('latex_imgcss')."' class='tex' alt=\"".($formula_text)."\" />")."</span>".(get_option("mathjax_server") != ""?"<script type='math/tex;  mode=display'>".($formula_text)."</script>":"")."</p>";
                 
-                else return " <span class='MathJax_Preview'>".(get_option('latex_img_server')==""?"\(".($formula_text)."\)":"<img src='$cache_formula_url' style='".get_option('latex_imgcss')." $padding' class='tex' alt=\"".($formula_text)."\" />")."</span>".(get_option("mathjax_server") != ""?"<script type='math/tex'>".($formula_text)."</script> ":" ");
+                else return (get_option('latex_ifspacewrapped')?" ":'')."<span class='MathJax_Preview'>".(get_option('latex_img_server')==""?"\(".($formula_text)."\)":"<img src='$cache_formula_url' style='".get_option('latex_imgcss')." $padding' class='tex' alt=\"".($formula_text)."\" />")."</span>".(get_option("mathjax_server") != ""?"<script type='math/tex'>".($formula_text)."</script>":"").(get_option('latex_ifspacewrapped')?" ":"");
     }
 }
 

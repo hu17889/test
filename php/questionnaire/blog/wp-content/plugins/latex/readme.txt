@@ -2,8 +2,8 @@
 Contributors: zhiqiang
 Donate link: 
 Tags: LaTeX, formatting, mimetex,tex, math, equations, mathematics, formula
-Requires at least: 3.4
-Tested up to: 3.5
+Requires at least: 3.8
+Tested up to: 3.9
 Stable tag: trunk
 
 This plugin provide an easy and elegant solution to add and display your mathematical fourmula. 
@@ -11,6 +11,10 @@ This plugin provide an easy and elegant solution to add and display your mathema
 == Description ==
 
 verion logs:
+
+ver 3.4.10 revert the change in ver 3.4.8.
+
+ver 3.4.7 make the space around inline formula to be optional. It's closed by default. But I recommend turn on it on Chinese blog.
 
 ver 3.4.6 Add a space around the inline formula.
 

@@ -232,6 +232,15 @@ function f2_post_class( $classes ) {
 add_filter( 'post_class', 'f2_post_class' );
 
 
+
+//替换字体
+function wpdx_replace_open_sans() {
+  wp_deregister_style('open-sans');
+  wp_register_style( 'open-sans', '//fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600' );
+  if(is_admin()) wp_enqueue_style( 'open-sans');
+}
+add_action( 'init', 'wpdx_replace_open_sans' );
+
 /**
  * Adds a 'Continue reading...' link at the end of the excrept.
  *

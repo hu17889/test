@@ -3,13 +3,13 @@
 Plugin Name: Sock'Em SPAMbots
 Plugin URI: http://wordpress.org/extend/plugins/sockem-spambots/
 Description: A seamless approach to deflecting the vast majority of SPAM comments.
-Version: 0.7.0
+Version: 0.8.0
 Author: Blobfolio, LLC
 Author URI: http://www.blobfolio.com/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-	Copyright © 2013  Blobfolio, LLC  (email: hello@blobfolio.com)
+	Copyright © 2014  Blobfolio, LLC  (email: hello@blobfolio.com)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -58,6 +58,8 @@ function sockem_get_option($option=null, $refresh=false){
 								 'test_filler'=>true,									//require leaving this field empty to submit comment
 								 'test_speed'=>true,									//test speediness
 								 'test_speed_seconds'=>5,								//the number of seconds to use for submissions
+								 'test_links'=>true,									//test for excessive number of links
+								 'test_links_max'=>5,									//the number of links allowed
 								 'exempt_users'=>true,									//exempt logged-in users from tests
 								 'salt'=>sockem_make_salt(),							//a salt used to make hashes less predictable one site to the next
 								 'algo'=>'sha512',										//the hasing algorithm to use
@@ -440,6 +442,21 @@ function sockem_comment_form_validation($commentdata){
 		}
 		else
 			$debug[] = '[N/A] Comment speed is not tested.';
+
+		//link test?
+		if($sockem_options['test_links'] === true)
+		{
+			$link_count = (int) preg_match_all('/\<a[^>]+>/i', $commentdata['comment_content'], $tmp);
+			if($link_count > $sockem_options['test_links_max'])
+			{
+				$debug[] = "[FAIL] Comment contains excessive links ($link_count).";
+				$errors[] = "Comments may only contain up to {$sockem_options['test_links_max']} links.";
+			}
+			else
+				$debug[] = "[PASS] Comment did not contain excessive links ($link_count).";
+		}
+		else
+			$debug[] = '[N/A] Comment link count is not tested.';
 
 	}//end regular comments
 	//trackbacks?

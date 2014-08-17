@@ -13,6 +13,7 @@ if (!is_dir(get_option("latex_cache_path")))
 <?php
 
 if (isset($_REQUEST["update_latex_option"])){
+    update_option("latex_ifspacewrapped", count($_REQUEST["latex_ifspacewrapped"]) > 0 ? true : false);
 	update_option("latex_imgcss", $_REQUEST["latex_imgcss"]);
 	update_option("latex_mathjax_config", $_REQUEST["latex_mathjax_config"]);
 	if ($_REQUEST["latex_img_server"] != "custom")
@@ -31,6 +32,21 @@ if (isset($_REQUEST["update_latex_option"])){
 }
 ?>
 	<form method="post">
+    <h3>General Setting</h3>
+    <table class="form-table">
+		<tbody>
+		<tr>
+			<th>
+				<label><input name="latex_ifspacewrapped" type="checkbox" value="" class="tog"
+				<?php echo get_option('latex_ifspacewrapped')?"checked='checked'":"";?>>
+				white space wrapped			</label>
+			</th>
+			<td>
+                Recommend turn on it in Chinese blog. see here: <a href="http://zhiqiang.org">http://zhiqiang.org</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 	<h3>LaTex Image server</h3>
 	<p>The LaTex image service is to convert the latex codes in your bolg to images which 
 	will be replaced in your posts.	You can use mimetex to build up your own latex service, or just use public ones.

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://love.hackerzhou.me/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Our Love Story</title>
+	
+	<!--background-image:url(/fun/love.jpg); background-repeat:no-repeat; background-attachment:fixed;background-size:400px;-->
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="./Our Love Story_files/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="./Our Love Story_files/jquery.js"></script>
+	<script type="text/javascript" src="./Our Love Story_files/garden.js"></script>
+    <script type="text/javascript" src="./Our Love Story_files/functions.js"></script>
+</head>
+
+<body>
+	<div id="mainDiv">
+		<div id="content" style="width: 1110px; height: 625px; margin-top: 10px; margin-left: 396.5px; ">
+			<div id="code" style="margin-top: 112.5px; ">
+				<span class="comments">/**</span><br>
+				<span class="space"><span class="comments">* I'm a programmers,</span><br>
+				<span class="space"><span class="comments">* so I write some code to celebrate our 999 days.</span><br>
+				<span class="space"><span class="comments">*/</span><br>
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"Hu Cong"</span>);<br>
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"Yu Minglu"</span>);<br>
+				<span class="comments">// Aug 1, 2010, I told you I love you. </span><br>
+				i.love(u);<br>
+				<span class="comments">// Luckily, you accepted and became my girlfriend eversince.</span><br>
+				u.accepted();<br>
+				<span class="comments">// Since then, I miss u every day.</span><br>
+				i.miss(u);<br>
+				<span class="comments">// And take care of u and our love.</span><br>
+				i.takeCareOf(u);<br>
+				<span class="comments">// And we will have a baby.</span><br>
+				u.have(baby);<br>
+				<span class="comments">// And a lovely family.</span><br>
+				family.set(i,u,baby)<br>
+				family.happylife()<br>
+				family.happylife()<br>
+				family.happylife()<br>
+				<span class="comments">// And baby grow up.</span><br>
+				baby.growup();<br>
+				<span class="comments">// And we grow older.</span><br>
+				i.old();<br>
+				u.old();<br>
+				<span class="comments">// And ................</span><br>
+				love.forever();<br>
+
+				<span class="placeholder"><span class="comments">// I think it is an important decision to us by 2010-08-01</span><br>
+				<span class="placeholder"><span class="comments">// and_</span></span></span></span></span></span></span></div>
+			<div id="loveHeart">
+				<canvas id="garden" width="670" height="625"></canvas>
+				<div id="words" style="position: absolute; top: 205px; left: 906.5px; ">
+					<div id="messages" style="display: block; ">
+						Lu Lu, I have fallen in love with you for
+						<div id="elapseClock"><span class="digit">882</span> days <span class="digit">18</span> hours <span class="digit">56</span> minutes <span class="digit">07</span> seconds</div>
+					</div>
+					<div id="loveu" style="display: block; ">
+						Love u forever and ever.<br>
+						<div class="signature">- Cong Cong</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+		</div>
+		<embed height="0" width="100" src="/fun/lovesong.mp3" loop="true" />
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2010, 7, 1);
+		together.setHours(0);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				adjustWordsPosition();
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+
+
+</body></html>
